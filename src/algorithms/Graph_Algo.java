@@ -30,11 +30,6 @@ public class Graph_Algo implements graph_algorithms{
 
 	private DGraph g;
 
-	//getter
-	public DGraph getGraph() {
-		return this.g;
-	}
-
 	//constructors
 	public Graph_Algo() { //default
 		this.g = new DGraph();
@@ -311,6 +306,8 @@ public class Graph_Algo implements graph_algorithms{
 		return newG;
 	}
 
+	//get & set
+	
 	public DGraph getG() {
 		return g;
 	}

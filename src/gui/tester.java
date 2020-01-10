@@ -15,12 +15,10 @@ public class tester
     static node_data n2;
     static node_data n3;
     static node_data n4;
-
     static node_data n5;
     static node_data n6;
     static node_data n7;
     static node_data n8;
-
     static node_data n9;
 
     public static void graph1() {
@@ -29,15 +27,15 @@ public class tester
         Node n2 = new Node(1, new Point3D(-2,5));
         Node n3 = new Node(2, new Point3D(3,-5));
         Node n4 = new Node(3, new Point3D(2,7));
-        gg.getGA().getGraph().addNode(n1);
-        gg.getGA().getGraph().addNode(n2);
-        gg.getGA().getGraph().addNode(n3);
-        gg.getGA().getGraph().addNode(n4);
-        gg.getGA().getGraph().connect(0,1, 8);
-        gg.getGA().getGraph().connect(1,0, 15);
-        gg.getGA().getGraph().connect(2,3, 4);
-        gg.getGA().getGraph().connect(1,2, 7);
-        gg.getGA().getGraph().connect(1,3, 30);
+        gg.getGA().getG().addNode(n1);
+        gg.getGA().getG().addNode(n2);
+        gg.getGA().getG().addNode(n3);
+        gg.getGA().getG().addNode(n4);
+        gg.getGA().getG().connect(0,1, 8);
+        gg.getGA().getG().connect(1,0, 15);
+        gg.getGA().getG().connect(2,3, 4);
+        gg.getGA().getG().connect(1,2, 7);
+        gg.getGA().getG().connect(1,3, 30);
     }
 
     public static void graph2() {
@@ -70,19 +68,19 @@ public class tester
         Node N4 = new Node(4, new Point3D(2,11));
         Node N5 = new Node(5, new Point3D(-15,4));
 
-        GA.getGraph().addNode(N1);
-        GA.getGraph().addNode(N2);
-        GA.getGraph().addNode(N3);
-        GA.getGraph().addNode(N4);
-        GA.getGraph().addNode(N5);
+        GA.getG().addNode(N1);
+        GA.getG().addNode(N2);
+        GA.getG().addNode(N3);
+        GA.getG().addNode(N4);
+        GA.getG().addNode(N5);
 
-        GA.getGraph().connect(1,5,3);
-        GA.getGraph().connect(5,2,2);
-        GA.getGraph().connect(2,3,5);
-        GA.getGraph().connect(3,4,6);
-        GA.getGraph().connect(4,3,7);
-        GA.getGraph().connect(3,1,4);
-        GA.getGraph().connect(3,5,1);
+        GA.getG().connect(1,5,3);
+        GA.getG().connect(5,2,2);
+        GA.getG().connect(2,3,5);
+        GA.getG().connect(3,4,6);
+        GA.getG().connect(4,3,7);
+        GA.getG().connect(3,1,4);
+        GA.getG().connect(3,5,1);
 
         Graph_GUI gg = new Graph_GUI(GA);
 
@@ -92,7 +90,7 @@ public class tester
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            GA.getGraph().addNode(new Node(6+i, new Point3D(-7+i, 15)));
+            GA.getG().addNode(new Node(6+i, new Point3D(-7+i, 15)));
         }
     }
 

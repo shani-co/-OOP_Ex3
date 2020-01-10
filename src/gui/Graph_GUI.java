@@ -64,7 +64,7 @@ public class Graph_GUI extends JFrame implements ActionListener, Runnable {
         //find the scale size
         double INF = Double.MAX_VALUE, MINF = Double.MIN_VALUE;
         double minX = INF, maxX = MINF, minY = INF, maxY = MINF;
-        for (node_data n : ga.getGraph().getV()) {
+        for (node_data n : ga.getG().getV()) {
             Point3D p = n.getLocation();
             if (p.x() > maxX) maxX = p.x();
             if (p.x() < minX) minX = p.x();
@@ -79,12 +79,12 @@ public class Graph_GUI extends JFrame implements ActionListener, Runnable {
 
         if (algo)  //if the method was triggered by an algorithm (shortestPath/TSP)
             paintPath(path, minX, maxX, maxY);
-        for (node_data n : ga.getGraph().getV()) {
+        for (node_data n : ga.getG().getV()) {
             for (int dest : ((Node) n).getNeighbors().keySet()) {
                 String e = n.getKey() + "," + dest; //e = string representing an edge that begins in n and ends in dest.
                 String e_reverse = dest + "," + n.getKey();
                 Point3D p_src = n.getLocation();
-                Point3D p_dest = ga.getGraph().getNode(dest).getLocation();
+                Point3D p_dest = ga.getG().getNode(dest).getLocation();
                 //checks if e is part of the path (so there is already an orange line there).
                 if (!algo || (path == null) || (!likeString(path).contains(e) && !likeString(path).contains(e_reverse))) {
                     StdDraw.setPenColor(Color.PINK);
@@ -105,13 +105,13 @@ public class Graph_GUI extends JFrame implements ActionListener, Runnable {
                 //draw the edge's weight
                 StdDraw.setPenColor(Color.BLACK);
                 StdDraw.setPenRadius(0.04);
-                String w = Double.toString(ga.getGraph().getEdge(n.getKey(), dest).getWeight());
+                String w = Double.toString(ga.getG().getEdge(n.getKey(), dest).getWeight());
                 StdDraw.text(x_space, y_space + 0.15, w);
             }
         }
 
         //draw each vertex & it's key
-        for (node_data n : ga.getGraph().getV()) {
+        for (node_data n : ga.getG().getV()) {
             StdDraw.setPenColor(Color.black);
             StdDraw.setPenRadius(0.05);
             Point3D p = n.getLocation();

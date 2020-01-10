@@ -68,7 +68,7 @@ public class Test {
         System.out.println("test1_main");
         System.out.println(ga.isConnected());
 
-        ga.getGraph().removeEdge(1, 2);
+        ga.getG().removeEdge(1, 2);
 
         System.out.println("test2_main");
         System.out.println(ga.isConnected());
@@ -198,23 +198,23 @@ public class Test {
         Node N4 = new Node(4, new Point3D(3,4));
         Node N5 = new Node(5, new Point3D(3,4));
 
-        GA.getGraph().addNode(N1);
-        GA.getGraph().addNode(N2);
-        GA.getGraph().addNode(N3);
-        GA.getGraph().addNode(N4);
-        GA.getGraph().addNode(N5);
+        GA.getG().addNode(N1);
+        GA.getG().addNode(N2);
+        GA.getG().addNode(N3);
+        GA.getG().addNode(N4);
+        GA.getG().addNode(N5);
 
-        GA.getGraph().connect(1,5,3);
-        GA.getGraph().connect(5,2,2);
-        GA.getGraph().connect(2,3,5);
-        GA.getGraph().connect(3,4,6);
-        GA.getGraph().connect(4,3,7);
-        GA.getGraph().connect(3,1,4);
-        GA.getGraph().connect(3,5,1);
+        GA.getG().connect(1,5,3);
+        GA.getG().connect(5,2,2);
+        GA.getG().connect(2,3,5);
+        GA.getG().connect(3,4,6);
+        GA.getG().connect(4,3,7);
+        GA.getG().connect(3,1,4);
+        GA.getG().connect(3,5,1);
 
         System.out.println(GA.isConnected());
 
-        GA.getGraph().removeEdge(3,4);
+        GA.getG().removeEdge(3,4);
 
         System.out.println(GA.isConnected());
     }

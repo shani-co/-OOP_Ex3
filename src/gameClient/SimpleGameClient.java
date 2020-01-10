@@ -68,7 +68,6 @@ public class SimpleGameClient {
 	 * in case the robot is on a node the next destination (next edge) is chosen (randomly).
 	 * @param game
 	 * @param gg
-	 * @param log
 	 */
 	private static void moveRobots(game_service game, oop_graph gg) {
 		List<String> log = game.move();

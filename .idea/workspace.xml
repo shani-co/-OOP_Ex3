@@ -1,21 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="" />
+    <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/GameServer_v0_27.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/gson_2_8_6.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gameClient/gson-2.8.6.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gameClient/testGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectOriented_Task3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectOriented_Task3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Testing/Graph_AlgoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing/Graph_AlgoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/Graph_Algo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Graph_Algo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dataStructure/DGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataStructure/DGraph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameClient/SimpleGameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/SimpleGameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/Graph_GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/Graph_GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/tester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/tester.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1WCqMoBSQ3QuQapl269vcej4Y7n" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MonheAtzamim" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/gameClient/gson-2.8.6.jar!/" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -29,6 +71,40 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Application.testGUI">
+    <configuration name="SimpleGameClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gameClient.SimpleGameClient" />
+      <module name="ObjectOriented_Task3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gameClient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gameClient.testGUI" />
+      <module name="ObjectOriented_Task3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gameClient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.testGUI" />
+        <item itemvalue="Application.SimpleGameClient" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -39,11 +115,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1578663879289</updated>
-      <workItem from="1578663883560" duration="303000" />
+      <workItem from="1578663883560" duration="10237000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

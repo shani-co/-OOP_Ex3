@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="GameServer_v0.27">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/GameServer_v0.27.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/java-json.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/java-json.jar!/" />
+    </SOURCES>
+  </library>
+</component>
