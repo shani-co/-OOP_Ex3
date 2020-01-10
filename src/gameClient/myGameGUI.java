@@ -99,10 +99,11 @@ public class myGameGUI {
         //draw each vertex & it's key
         for (node_data n : ga.getG().getV()) {
             StdDraw.setPenColor(Color.black);
-            StdDraw.setPenRadius(0.05);
+            StdDraw.setPenRadius(0.03);
             Point3D p = n.getLocation();
             StdDraw.point(p.x(), p.y());
             StdDraw.setPenColor(Color.WHITE);
+            StdDraw.setFont(new Font("Ariel", Font.PLAIN, 10));
             StdDraw.text(p.x(), p.y(), n.getKey() + "");
         }
     }
