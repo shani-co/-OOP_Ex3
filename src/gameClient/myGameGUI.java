@@ -3,19 +3,19 @@ package gameClient;
 import Server.Game_Server;
 import Server.game_service;
 import algorithms.Graph_Algo;
-import dataStructure.DGraph;
-import dataStructure.Node;
-import dataStructure.node_data;
+import dataStructure.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.Point3D;
 import utils.StdDraw;
 
 import java.awt.*;
+import java.util.Collection;
 import java.util.List;
 import java.lang.String;
+import java.util.Iterator;
 
-public class myGameGUI {
+public class myGameGUI implements Runnable {
 
     private Graph_Algo ga;
     private int scenario_num;
@@ -83,12 +83,11 @@ public class myGameGUI {
         StdDraw.setYscale(minY - per * minY, maxY + per * maxY);
 
         //addBackgroundImg(maxX, maxY, minX, minY, per);
-
         drawEdges(maxX, maxY, minX, minY, per);
-
         drawVertices();
-
         drawFruits(maxX, maxY, minX, minY, per);
+        drawRobots();
+        run();
     }
 
     /**
@@ -187,6 +186,84 @@ public class myGameGUI {
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void drawRobots() {
+        try {
+            JSONObject line = new JSONObject(game.toString());
+            int robotsSize = line.getJSONObject("GameServer").getInt("robots");
+            for(int i = 0; i < robotsSize; i++)
+                game.addRobot(i); //***change it!!! *********
+            List<String> robots = game.getRobots();
+            for(int i = 0; i < robots.size(); i++) {
+                JSONObject robot = new JSONObject(robots.get(i));
+                JSONObject rob = robot.getJSONObject("Robot");
+                int id = rob.getInt("id");
+                int src = rob.getInt("src");
+                int dest = rob.getInt("dest");
+                double speed = rob.getDouble("speed");
+                String pos = rob.getString("pos");
+                String[] spl = pos.split(",");
+                double x = Double.parseDouble(spl[0]);
+                double y = Double.parseDouble(spl[1]);
+                String robotFile = "";
+                if(id == 0) robotFile = "data\\spiderman.png";
+                if(id == 1) robotFile = "data\\deadpool.png";
+                if(id == 2) robotFile = "data\\thor.png";
+                StdDraw.picture(x, y, robotFile);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //Boaz's methods:
+
+    private static void moveRobots(game_service game, graph gg) {
+        List<String> log = game.move();
+        if(log!=null) {
+            long t = game.timeToEnd();
+            for(int i=0;i<log.size();i++) {
+                String robot_json = log.get(i);
+                System.out.println(robot_json);
+                try {
+                    JSONObject line = new JSONObject(robot_json);
+                    JSONObject ttt = line.getJSONObject("Robot");
+                    int rid = ttt.getInt("id");
+                    int src = ttt.getInt("src");
+                    int dest = ttt.getInt("dest");
+
+                    if(dest==-1) {
+                        dest = nextNode(gg, src);
+                        game.chooseNextEdge(rid, dest);
+                        System.out.println("Turn to node: "+dest+"  time to end:"+(t/1000));
+                        System.out.println(ttt);
+                    }
+                }
+                catch (JSONException e) {e.printStackTrace();}
+            }
+        }
+    }
+
+    private static int nextNode(graph g, int src) {
+        int ans = -1;
+        Collection<edge_data> ee = g.getE(src);
+        Iterator<edge_data> itr = ee.iterator();
+        int s = ee.size();
+        int r = (int)(Math.random()*s);
+        int i=0;
+        while(i<r) {itr.next();i++;}
+        ans = itr.next().getDest();
+        return ans;
+    }
+
+    @Override
+    public void run() {
+        game.startGame();
+        // should be a Thread!!!
+        while(game.isRunning()) {
+            moveRobots(game, ga.getG());
         }
     }
 }
