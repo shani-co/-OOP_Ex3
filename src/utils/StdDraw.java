@@ -67,13 +67,7 @@ import java.util.TreeSet;
 import java.util.NoSuchElementException;
 import javax.imageio.ImageIO;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 
 /**
  *  The {@code StdDraw} class provides a basic capability for
@@ -1900,7 +1894,6 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 		StdDraw.setPenColor(StdDraw.WHITE);
 		StdDraw.text(0.8, 0.8, "white text");
 	}
-
 }
 
 
