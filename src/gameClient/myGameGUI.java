@@ -9,21 +9,18 @@ import org.json.JSONObject;
 import utils.Point3D;
 import utils.StdDraw;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.Collection;
 import java.util.List;
 import java.lang.String;
 import java.util.Iterator;
 
-public class myGameGUI implements Runnable, MouseListener {
+
+public class myGameGUI implements Runnable {
 
     private Graph_Algo ga;
     private int scenario_num;
     private game_service game;
-    //private boolean isManual;
 
     //getter
     public Graph_Algo getGA() {
@@ -90,10 +87,8 @@ public class myGameGUI implements Runnable, MouseListener {
         drawEdges(maxX, maxY, minX, minY, per);
         drawVertices();
         drawFruits(maxX, maxY, minX, minY, per);
-        //explainGame(); //a window with the things that the user should do
         drawRobots();
-        //showTime() ?
-        //run();
+        run();
     }
 
     /**
@@ -196,9 +191,8 @@ public class myGameGUI implements Runnable, MouseListener {
         try {
             JSONObject line = new JSONObject(game.toString());
             int robotsSize = line.getJSONObject("GameServer").getInt("robots");
-            for(int i = 0; i < robotsSize; i++) {
-                posRobot_manual(i);
-            }
+            for(int i = 0; i < robotsSize; i++)
+                game.addRobot(i); //***change it!!! *********
             List<String> robots = game.getRobots();
             for(int i = 0; i < robots.size(); i++) {
                 JSONObject robot = new JSONObject(robots.get(i));
@@ -220,11 +214,6 @@ public class myGameGUI implements Runnable, MouseListener {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
-
-    private void posRobot_manual(int count) {
-        JOptionPane.showMessageDialog(null, "Please click the vertex you want to put the " + count + "th robot into",
-                "Instructions", JOptionPane.PLAIN_MESSAGE);
     }
 
     //Boaz's methods:
@@ -274,30 +263,5 @@ public class myGameGUI implements Runnable, MouseListener {
         while(game.isRunning()) {
             moveRobots(game, ga.getG());
         }
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 }
