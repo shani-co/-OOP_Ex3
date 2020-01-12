@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/gameObjects/Fruit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameClient/testGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/testGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameObjects/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Fruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameObjects/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Robot.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameObjects/RobotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/RobotCollector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +87,7 @@
       <module name="ObjectOriented_Task3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gameClient.*" />
+          <option name="PATTERN" value="gameClient.myGameGUI" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,7 +100,7 @@
       <module name="ObjectOriented_Task3" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gameClient.*" />
+          <option name="PATTERN" value="gameClient.myGameGUI" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -139,7 +142,13 @@
       <option name="presentableId" value="LOCAL‎00002" />
       <updated>1578837617471</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL‎00003" summary="fixed bugs in Robot class">
+      <created>1578857133341</created>
+      <option name="number" value="LOCAL‎00003" />
+      <option name="presentableId" value="LOCAL‎00003" />
+      <updated>1578857133341</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,7 +171,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="made function AutoDrive- locate robot" />
     <MESSAGE value="tried to implements mouse clicked" />
-    <option name="LAST_COMMIT_MESSAGE" value="tried to implements mouse clicked" />
+    <MESSAGE value="fixed bugs in Robot class" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs in Robot class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578828960441">

@@ -90,8 +90,8 @@ public class Robot {
             this.loc_y = Double.parseDouble(spl[1]);
             if(id == 0) this.fileName = "data\\spiderman.png";
             if(id == 1) this.fileName = "data\\deadpool.png";
-            if(id == 2) this.fileName = "data\\thor.png";
-            if(id == 3) this.fileName = "data\\wolverine.png";
+            if(id == 2) this.fileName = "data\\wolverine.png";
+            if(id == 3) this.fileName = "data\\thor.png";
             if(id == 4) this.fileName = "data\\groot.png";
         } catch (JSONException e) {
             e.printStackTrace();

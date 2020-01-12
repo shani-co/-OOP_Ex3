@@ -4,6 +4,8 @@ import Server.Game_Server;
 import Server.game_service;
 import algorithms.Graph_Algo;
 import dataStructure.*;
+import gameObjects.Fruit;
+import gameObjects.FruitCollector;
 import gameObjects.RobotCollector;
 import gameObjects.Robot;
 import org.json.JSONException;
@@ -24,6 +26,7 @@ public class myGameGUI implements Runnable {
     private int scenario_num;
     private game_service game;
     private RobotCollector RC = new RobotCollector();
+    private FruitCollector FC = new FruitCollector();
 
     //getter
     public Graph_Algo getGA() {
@@ -89,11 +92,11 @@ public class myGameGUI implements Runnable {
         //addBackgroundImg(maxX, maxY, minX, minY, per);
         drawEdges(maxX, maxY, minX, minY, per);
         drawVertices();
-        drawFruits(maxX, maxY, minX, minY, per);
-        //explainGame(); //a window with the things that the user should do
+        drawFruits();
         drawRobots();
+        //explainGame(); //a window with the things that the user should do
         //showTime() ?
-        //run();
+        run();
     }
 
     /**
@@ -171,24 +174,12 @@ public class myGameGUI implements Runnable {
     /**
      * add fruits (banana & apple) to the GUI, on it's places
      */
-    private void drawFruits(double maxX, double maxY, double minX, double minY, double per) {
+    private void drawFruits() {
         List<String> fruits = game.getFruits();
-        try {
-            for(int i = 0; i < fruits.size(); i++) {
-                JSONObject line = new JSONObject(fruits.get(i));
-                //value ????
-                int type = line.getJSONObject("Fruit").getInt("type");
-                String pos = line.getJSONObject("Fruit").getString("pos");
-                String[] spl = pos.split(",");
-                double x = Double.parseDouble(spl[0]);
-                double y = Double.parseDouble(spl[1]);
-                String fruitFile = "";
-                if(type == 1) fruitFile = "data\\apple.png"; //apple
-                if(type == -1) fruitFile = "data\\banana.png"; //banana
-                StdDraw.picture(x, y, fruitFile);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
+        for(int i = 0; i < fruits.size(); i++) {
+            Fruit f = new Fruit(fruits.get(i));
+            FC.addFruit(f);
+            StdDraw.picture(f.getX(), f.getY(), f.getFileName());
         }
     }
 
@@ -224,42 +215,35 @@ public class myGameGUI implements Runnable {
         }
     }
 
-    //Boaz's method:
-    /*private static void moveRobots(game_service game, graph gg) {
-        List<String> log = game.move();
-        if(log!=null) {
-            long t = game.timeToEnd();
-            for(int i=0;i<log.size();i++) {
-                String robot_json = log.get(i);
-                System.out.println(robot_json);
-                try {
-                    JSONObject line = new JSONObject(robot_json);
-                    JSONObject ttt = line.getJSONObject("Robot");
-                    int rid = ttt.getInt("id");
-                    int src = ttt.getInt("src");
-                    int dest = ttt.getInt("dest");
-
-                    if(dest==-1) {
-                        dest = nextNode(gg, src);
-                        game.chooseNextEdge(rid, dest);
-                        System.out.println("Turn to node: "+dest+"  time to end:"+(t/1000));
-                        System.out.println(ttt);
+    private void moveRobots() {
+        for(int i = 0; i < RC.getSize(); i++) {
+            markRobot(i);
+            List<String> log = game.move();
+            if (log != null) {
+                long t = game.timeToEnd();
+                for (int j = 0; j < log.size(); j++) {
+                    String robot_json = log.get(j);
+                    System.out.println(robot_json);
+                    Robot robot = RC.getRobot(i);
+                    if (robot.getDest() == -1) {
+                        robot.setDest(nextNode());
+                        game.chooseNextEdge(i, robot.getDest());
+                        System.out.println("Turn to node: " + robot.getDest() + "  time to end:" + (t / 1000));
                     }
                 }
-                catch (JSONException e) {e.printStackTrace();}
             }
         }
-    }*/
+    }
 
-    private int nextNode(Robot rob) {
+    private void markRobot(int i) {
+    }
+
+    private int nextNode() {
         if(StdDraw.isMousePressed()) {
             Node n = findNearestNode(StdDraw.mouseX(), StdDraw.mouseY());
             if (n == null)
                 JOptionPane.showMessageDialog(null, "Please be more accurate", "Error", JOptionPane.ERROR_MESSAGE);
-            else {
-
-            }
-            return n.getKey();
+            else return n.getKey();
         }
         return -1;
     }
@@ -283,7 +267,7 @@ public class myGameGUI implements Runnable {
     public void run() {
         game.startGame();
         while(game.isRunning()) {
-            //moveRobots(game, ga.getG());
+            moveRobots();
         }
     }
 
