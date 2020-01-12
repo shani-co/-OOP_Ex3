@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="made function AutoDrive- locate robot">
-      <change afterPath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" afterDir="false" />
+    <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/1.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/2.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,8 +120,15 @@
       <option name="presentableId" value="Default" />
       <updated>1578663879289</updated>
       <workItem from="1578663883560" duration="31398000" />
-      <workItem from="1578815185451" duration="9431000" />
+      <workItem from="1578815185451" duration="9533000" />
     </task>
+    <task id="LOCAL‎00001" summary="made function AutoDrive- locate robot">
+      <created>1578828961305</created>
+      <option name="number" value="LOCAL‎00001" />
+      <option name="presentableId" value="LOCAL‎00001" />
+      <updated>1578828961305</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,10 +153,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="made function AutoDrive- locate robot" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578828826081">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578828960441">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578828826081" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578828960441" />
     <state width="1237" height="107" key="GridCell.Tab.0.bottom" timestamp="1578826381205">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
