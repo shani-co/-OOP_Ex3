@@ -1,10 +1,12 @@
 package gameObjects;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class RobotCollector {
 
-    private Collection<Robot> RC;
+    private List<Robot> RC = new ArrayList<>();
 
     //constructor
 

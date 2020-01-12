@@ -23,7 +23,7 @@ public class myGameGUI implements Runnable {
     private Graph_Algo ga;
     private int scenario_num;
     private game_service game;
-    private RobotCollector RC;
+    private RobotCollector RC = new RobotCollector();
 
     //getter
     public Graph_Algo getGA() {
@@ -132,7 +132,7 @@ public class myGameGUI implements Runnable {
                 Point3D p_src = n.getLocation();
                 Point3D p_dest = ga.getG().getNode(dest).getLocation();
                 StdDraw.setPenColor(Color.GRAY);
-                StdDraw.setPenRadius(0.006);
+                StdDraw.setPenRadius(0.003);
                 StdDraw.line(p_src.x(), p_src.y(), p_dest.x(), p_dest.y());
 
                 //calculate the space to take from dest, to put the arrow
@@ -214,8 +214,14 @@ public class myGameGUI implements Runnable {
     private void posRobot_manual(int count) {
         String vertex = (String)JOptionPane.showInputDialog(null,
                 "Please choose the key of the vertex you want to put the " + count + "th robot into");
-        int key = Integer.parseInt(vertex);
-        game.addRobot(key);
+        try {
+            int key = Integer.parseInt(vertex);
+            game.addRobot(key);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Please write an integer that represents a vertex's key on the graph",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            throw new RuntimeException("try again");
+        }
     }
 
     //Boaz's method:

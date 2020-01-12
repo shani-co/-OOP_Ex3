@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/gameObjects/Robot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gameObjects/RobotCollector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gameObjects/Fruit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/StdDraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/StdDraw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameObjects/RobotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/RobotCollector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
