@@ -125,7 +125,7 @@ public class myGameGUI implements Runnable {
             for (int dest : ((Node) n).getNeighbors().keySet()) {
                 Point3D p_src = n.getLocation();
                 Point3D p_dest = ga.getG().getNode(dest).getLocation();
-                StdDraw.setPenColor(Color.PINK);
+                StdDraw.setPenColor(Color.GRAY);
                 StdDraw.setPenRadius(0.006);
                 StdDraw.line(p_src.x(), p_src.y(), p_dest.x(), p_dest.y());
 
@@ -133,10 +133,7 @@ public class myGameGUI implements Runnable {
                 double x_space = p_src.x() * 0.1 + p_dest.x() * 0.9;
                 double y_space = p_src.y() * 0.1 + p_dest.y() * 0.9;
                 //add a triangle that represents the head of the arrow
-                double width = (maxX - minX +  Math.abs(per*maxX) + Math.abs(per*minX)) / 55;
-                double height = (maxY - minY + Math.abs(per*maxY) + Math.abs(per*minY)) / 45;
-                StdDraw.picture(x_space, y_space, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOAV_8t4Cpta3s1rFNJSvA9OyGs9eyKfuV4Zb0sPE8-3mEZj3O&s",
-                        width, height);
+                StdDraw.picture(x_space, y_space, "data\\play-arrow.png");
 
                 //calculate the space to take from dest, to put the edge's weight
                 x_space = p_src.x() * 0.22 + p_dest.x() * 0.88;
@@ -155,11 +152,11 @@ public class myGameGUI implements Runnable {
      */
     private void drawVertices() {
         for (node_data n : ga.getG().getV()) {
-            StdDraw.setPenColor(Color.black);
+            StdDraw.setPenColor(Color.pink);
             StdDraw.setPenRadius(0.03);
             Point3D p = n.getLocation();
             StdDraw.point(p.x(), p.y());
-            StdDraw.setPenColor(Color.WHITE);
+            StdDraw.setPenColor(Color.BLACK);
             StdDraw.setFont(new Font("Ariel", Font.PLAIN, 10));
             StdDraw.text(p.x(), p.y(), n.getKey() + "");
         }
