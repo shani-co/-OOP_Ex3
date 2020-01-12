@@ -93,7 +93,7 @@ public class myGameGUI implements Runnable, MouseListener {
         //explainGame(); //a window with the things that the user should do
         drawRobots();
         //showTime() ?
-        //run();
+        run();
     }
 
     /**
@@ -225,6 +225,7 @@ public class myGameGUI implements Runnable, MouseListener {
     private void posRobot_manual(int count) {
         JOptionPane.showMessageDialog(null, "Please click the vertex you want to put the " + count + "th robot into",
                 "Instructions", JOptionPane.PLAIN_MESSAGE);
+        game.addRobot(count);
     }
 
     //Boaz's methods:
