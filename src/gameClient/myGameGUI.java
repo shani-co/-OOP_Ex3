@@ -4,6 +4,8 @@ import Server.Game_Server;
 import Server.game_service;
 import algorithms.Graph_Algo;
 import dataStructure.*;
+import gameObjects.RobotCollector;
+import gameObjects.Robot;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.Point3D;
@@ -11,20 +13,17 @@ import utils.StdDraw;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Collection;
 import java.util.List;
 import java.lang.String;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
 
-public class myGameGUI implements Runnable, MouseListener {
+public class myGameGUI implements Runnable {
 
     private Graph_Algo ga;
     private int scenario_num;
     private game_service game;
-    //private boolean isManual;
+    private RobotCollector RC;
 
     //getter
     public Graph_Algo getGA() {
@@ -194,37 +193,18 @@ public class myGameGUI implements Runnable, MouseListener {
     }
 
     private void drawRobots() {
+        RobotCollector rc = new RobotCollector();
         try {
             JSONObject line = new JSONObject(game.toString());
             int robotsSize = line.getJSONObject("GameServer").getInt("robots");
-            for(int i = 0; i < robotsSize; i++) {
+            for (int i = 0; i < robotsSize; i++) {
                 posRobot_manual(i);
-                //deally
-                /*try {
-                    TimeUnit.SECONDS.sleep(7);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
             }
             List<String> robots = game.getRobots();
             for(int i = 0; i < robots.size(); i++) {
-                JSONObject robot = new JSONObject(robots.get(i));
-                JSONObject rob = robot.getJSONObject("Robot");
-                int id = rob.getInt("id");
-                int src = rob.getInt("src");
-                int dest = rob.getInt("dest");
-                double speed = rob.getDouble("speed");
-                String pos = rob.getString("pos");
-                String[] spl = pos.split(",");
-                double x = Double.parseDouble(spl[0]);
-                double y = Double.parseDouble(spl[1]);
-                String robotFile = "";
-                if(id == 0) robotFile = "data\\spiderman.png";
-                if(id == 1) robotFile = "data\\deadpool.png";
-                if(id == 2) robotFile = "data\\thor.png";
-                if(id == 3) robotFile = "data\\wolverine.png";
-                if(id == 4) robotFile = "data\\groot.png";
-                StdDraw.picture(x, y, robotFile);
+                Robot r = new Robot(robots.get(i));
+                RC.addRobot(r);
+                StdDraw.picture(r.getX(), r.getY(), r.getFileName());
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -232,17 +212,14 @@ public class myGameGUI implements Runnable, MouseListener {
     }
 
     private void posRobot_manual(int count) {
-        //JOptionPane.showMessageDialog(null, "Please double click the vertex you want to put the " + count + "th robot into",
-                //"Instructions", JOptionPane.PLAIN_MESSAGE);
         String vertex = (String)JOptionPane.showInputDialog(null,
                 "Please choose the key of the vertex you want to put the " + count + "th robot into");
         int key = Integer.parseInt(vertex);
         game.addRobot(key);
     }
 
-    //Boaz's methods:
-
-    private static void moveRobots(game_service game, graph gg) {
+    //Boaz's method:
+    /*private static void moveRobots(game_service game, graph gg) {
         List<String> log = game.move();
         if(log!=null) {
             long t = game.timeToEnd();
@@ -266,56 +243,27 @@ public class myGameGUI implements Runnable, MouseListener {
                 catch (JSONException e) {e.printStackTrace();}
             }
         }
-    }
+    }*/
 
-    private static int nextNode(graph g, int src) {
-        int ans = -1;
-        Collection<edge_data> ee = g.getE(src);
-        Iterator<edge_data> itr = ee.iterator();
-        int s = ee.size();
-        int r = (int)(Math.random()*s);
-        int i=0;
-        while(i<r) {itr.next();i++;}
-        ans = itr.next().getDest();
-        return ans;
-    }
-
-    @Override
-    public void run() {
-        game.startGame();
-        // should be a Thread!!!
-        while(game.isRunning()) {
-            moveRobots(game, ga.getG());
-        }
-    }
-
-    //implements mouseListener methods
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        int clickCount = e.getClickCount();
-        if(clickCount == 2) { //init the location of the robot
-            Node n = findNearestNode(e);
-            if(n == null)
+    private int nextNode(Robot rob) {
+        if(StdDraw.isMousePressed()) {
+            Node n = findNearestNode(StdDraw.mouseX(), StdDraw.mouseY());
+            if (n == null)
                 JOptionPane.showMessageDialog(null, "Please be more accurate", "Error", JOptionPane.ERROR_MESSAGE);
             else {
-                game.addRobot(n.getKey());
-                System.out.println("add robot");
-            }
-        }
-        if(clickCount == 1) { //choose the robot and it's next node
 
+            }
+            return n.getKey();
         }
+        return -1;
     }
 
     /**
-     * find the nearest vertex to the click location (with epsilon) and add there the robot
-     * @param e
+     * find the nearest vertex to the click location (with epsilon) and move there the robot
+     * @param
      */
-    private Node findNearestNode(MouseEvent e) {
+    private Node findNearestNode(double x, double y) {
         double eps = 0.01;
-        double x = e.getXOnScreen();
-        double y = e.getYOnScreen();
         for(node_data n : ga.getG().getV()) {
             boolean x_fine = (n.getLocation().x() >= x - eps) && (n.getLocation().x() <= x + eps);
             if(!x_fine) continue;
@@ -326,22 +274,11 @@ public class myGameGUI implements Runnable, MouseListener {
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-
+    public void run() {
+        game.startGame();
+        while(game.isRunning()) {
+            //moveRobots(game, ga.getG());
+        }
     }
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
 }

@@ -27,6 +27,11 @@ package utils;
  *
  ******************************************************************************/
 
+import Server.game_service;
+import algorithms.Graph_Algo;
+import dataStructure.Node;
+import dataStructure.node_data;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.FileDialog;
@@ -1713,7 +1718,7 @@ public final class StdDraw implements ActionListener, MouseListener, MouseMotion
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// this body is intentionally left empty
+
 	}
 
 	/**
