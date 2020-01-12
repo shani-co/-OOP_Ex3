@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.List;
 import java.lang.String;
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 
 public class myGameGUI implements Runnable, MouseListener {
 
@@ -93,7 +94,7 @@ public class myGameGUI implements Runnable, MouseListener {
         //explainGame(); //a window with the things that the user should do
         drawRobots();
         //showTime() ?
-        run();
+        //run();
     }
 
     /**
@@ -198,6 +199,12 @@ public class myGameGUI implements Runnable, MouseListener {
             int robotsSize = line.getJSONObject("GameServer").getInt("robots");
             for(int i = 0; i < robotsSize; i++) {
                 posRobot_manual(i);
+                //deally
+                /*try {
+                    TimeUnit.SECONDS.sleep(7);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }*/
             }
             List<String> robots = game.getRobots();
             for(int i = 0; i < robots.size(); i++) {
@@ -215,6 +222,8 @@ public class myGameGUI implements Runnable, MouseListener {
                 if(id == 0) robotFile = "data\\spiderman.png";
                 if(id == 1) robotFile = "data\\deadpool.png";
                 if(id == 2) robotFile = "data\\thor.png";
+                if(id == 3) robotFile = "data\\wolverine.png";
+                if(id == 4) robotFile = "data\\groot.png";
                 StdDraw.picture(x, y, robotFile);
             }
         } catch (JSONException e) {
@@ -223,9 +232,12 @@ public class myGameGUI implements Runnable, MouseListener {
     }
 
     private void posRobot_manual(int count) {
-        JOptionPane.showMessageDialog(null, "Please click the vertex you want to put the " + count + "th robot into",
-                "Instructions", JOptionPane.PLAIN_MESSAGE);
-        game.addRobot(count);
+        //JOptionPane.showMessageDialog(null, "Please double click the vertex you want to put the " + count + "th robot into",
+                //"Instructions", JOptionPane.PLAIN_MESSAGE);
+        String vertex = (String)JOptionPane.showInputDialog(null,
+                "Please choose the key of the vertex you want to put the " + count + "th robot into");
+        int key = Integer.parseInt(vertex);
+        game.addRobot(key);
     }
 
     //Boaz's methods:
@@ -277,9 +289,40 @@ public class myGameGUI implements Runnable, MouseListener {
         }
     }
 
+    //implements mouseListener methods
+
     @Override
     public void mouseClicked(MouseEvent e) {
+        int clickCount = e.getClickCount();
+        if(clickCount == 2) { //init the location of the robot
+            Node n = findNearestNode(e);
+            if(n == null)
+                JOptionPane.showMessageDialog(null, "Please be more accurate", "Error", JOptionPane.ERROR_MESSAGE);
+            else {
+                game.addRobot(n.getKey());
+                System.out.println("add robot");
+            }
+        }
+        if(clickCount == 1) { //choose the robot and it's next node
 
+        }
+    }
+
+    /**
+     * find the nearest vertex to the click location (with epsilon) and add there the robot
+     * @param e
+     */
+    private Node findNearestNode(MouseEvent e) {
+        double eps = 0.01;
+        double x = e.getXOnScreen();
+        double y = e.getYOnScreen();
+        for(node_data n : ga.getG().getV()) {
+            boolean x_fine = (n.getLocation().x() >= x - eps) && (n.getLocation().x() <= x + eps);
+            if(!x_fine) continue;
+            boolean y_fine = (n.getLocation().y() >= y - eps) && (n.getLocation().y() <= y + eps);
+            if(y_fine) return (Node)n; //both x and y are fine
+        }
+        return null;
     }
 
     @Override
