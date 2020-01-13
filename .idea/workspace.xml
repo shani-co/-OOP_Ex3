@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/SimpleGameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/SimpleGameClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/testGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/testGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameObjects/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Fruit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" afterDir="false" />
     </list>
@@ -129,7 +126,7 @@
       <workItem from="1578826001816" duration="4032000" />
       <workItem from="1578663883560" duration="31398000" />
       <workItem from="1578815185451" duration="9533000" />
-      <workItem from="1578908761850" duration="14000" />
+      <workItem from="1578908761850" duration="5053000" />
     </task>
     <task id="LOCAL‎00001" summary="made function AutoDrive- locate robot">
       <created>1578828961305</created>
@@ -143,7 +140,13 @@
       <option name="presentableId" value="LOCAL‎00002" />
       <updated>1578837617471</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL‎00003" summary="continue Fruit">
+      <created>1578908836575</created>
+      <option name="number" value="LOCAL‎00003" />
+      <option name="presentableId" value="LOCAL‎00003" />
+      <updated>1578908836575</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,13 +169,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="made function AutoDrive- locate robot" />
     <MESSAGE value="tried to implements mouse clicked" />
-    <option name="LAST_COMMIT_MESSAGE" value="tried to implements mouse clicked" />
+    <MESSAGE value="continue Fruit" />
+    <option name="LAST_COMMIT_MESSAGE" value="continue Fruit" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578828960441">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578908835876">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578828960441" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578908835876" />
     <state width="1237" height="41" key="GridCell.Tab.0.bottom" timestamp="1578908735103">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -189,6 +193,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="41" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578908735103" />
+    <state x="233" y="75" key="Vcs.Push.Dialog.v2" timestamp="1578908840129">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="75" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1578908840129" />
     <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1578908763186">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -201,5 +209,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="383" y="0" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1578904722035" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1578911956516">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1578911956516" />
   </component>
 </project>

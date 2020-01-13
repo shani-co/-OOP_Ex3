@@ -1,6 +1,7 @@
 package gameObjects;
 
 import Server.game_service;
+import dataStructure.DGraph;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -24,7 +25,7 @@ public class FruitCollector {
 
     public List<Fruit> getFC(){return FC;}
 
-    public void fruitID(game_service game){
+    public void fruitID_SRC(game_service game, DGraph graph){
         List<String> info = game.getFruits();
         Iterator<String> itr = info.iterator();
         int i=0;
@@ -32,6 +33,7 @@ public class FruitCollector {
             String fruit1 = itr.next();
           Fruit fruit = new Fruit(fruit1);
           fruit.setID(i);
+        fruit.setSrc(graph);
           addFruit(fruit);
           i++;
 

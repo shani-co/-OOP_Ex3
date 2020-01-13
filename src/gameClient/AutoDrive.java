@@ -5,6 +5,7 @@ import dataStructure.DGraph;
 import dataStructure.Node;
 import dataStructure.node_data;
 import gameObjects.Fruit;
+import gameObjects.FruitCollector;
 import gameObjects.Robot;
 import oop_utils.OOP_Point3D;
 import org.json.JSONException;
@@ -41,44 +42,29 @@ public class AutoDrive {
     }
 
 
-    private void findFirstLocation() {
-        List<String> fruits = game.getFruits();
+    private void findFirstLocationToRobot() {
         try {
-            for (int i = 0; i < fruits.size(); i++) {
-                JSONObject line = new JSONObject(fruits.get(i));
-                String pos = line.getJSONObject("Fruit").getString("pos");
-                String[] spl = pos.split(",");
-                double xFruit = Double.parseDouble(spl[0]);
-                double yFruit = Double.parseDouble(spl[1]);
-                Iterator<node_data> itr = this.graph.getV().iterator();
-                while (itr.hasNext()) {
-                    node_data src = itr.next();
-                    Iterator<Integer> itrDest = ((Node) src).getNeighbors().keySet().iterator();
-                    while (itrDest.hasNext()) {
-                       int dest1 = itrDest.next();
-                        node_data dest = graph.getNode(dest1);
-                       double distance = Point2D.distance(src.getLocation().x(),src.getLocation().y(),dest.getLocation().x(),dest.getLocation().y());
-                        double distance_ToFruit = Point2D.distance(src.getLocation().x(),src.getLocation().y(),xFruit,yFruit);
-                        double distance_FromFruit = Point2D.distance(xFruit,yFruit,dest.getLocation().x(),dest.getLocation().y());
-                        if(Math.abs(distance-(distance_ToFruit+distance_FromFruit))<=0.00004){
-                             game.addRobot(src.getKey());
-                        }
-
-                    }
-                }
-
+            new FruitCollector().fruitID_SRC(this.game, this.graph);
+            Iterator <String> itrRobot = game.getRobots().iterator();
+            Iterator <String> itrFruit = game.getFruits().iterator();
+            while(itrRobot.hasNext()) {
+                String locateRobot =itrRobot.next();
+                String fruit=itrFruit.next();
+                Fruit newFruit =  new Fruit(fruit);
+                newFruit.setSrc(graph);
+                game.addRobot(newFruit.getSRC().getKey());
 
             }
-        } catch (JSONException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
     //List<node_data> shortestPath(int src, int dest)
-    private int nearestFruit(Robot id){
+   /* private int nearestFruit(Robot id){
 
 
 
         return Fruit.getID:
     }
-
+*/
 }

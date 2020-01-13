@@ -25,13 +25,11 @@ public class Fruit {
 
     public node_data getSRC(){return src;}
 
-    public void setSRC(node_data src){this.src=src;}
-
     public node_data getDEST(){return dest;}
 
-    public void setDEST(node_data dest){this.dest=dest;}
-
-
+    public void setSrc(DGraph graph) {
+        findEdge(graph);
+    }
 
     public int getID(){return ID;}
 
@@ -96,7 +94,7 @@ public class Fruit {
         }
     }
 
-    private void findEdge(int fruitID, DGraph graph) {
+    private void findEdge(DGraph graph) {
         Iterator<node_data> itr = graph.getV().iterator();
         while (itr.hasNext()) {
             node_data src = itr.next();
@@ -110,9 +108,11 @@ public class Fruit {
                 if (Math.abs(distanceEdge - (distance_ToFruitEdge + distance_FromFruitEdge)) <= 0.00004) {
                     if(type == 1) {
                         this.src = src;
+                        this.dest = dest;
                     }
                     if(type == -1) {
-                        this.dest = dest;
+                        this.src = dest;
+                        this.dest = src;
                     }
                     break;
                 }
