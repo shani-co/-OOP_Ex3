@@ -8,6 +8,7 @@ import gameObjects.Fruit;
 import gameObjects.FruitCollector;
 import gameObjects.RobotCollector;
 import gameObjects.Robot;
+import gui.Graph_GUI;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.Point3D;
@@ -15,12 +16,26 @@ import utils.StdDraw;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Time;
 import java.util.List;
 import java.lang.String;
 import java.util.Iterator;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class myGameGUI implements Runnable {
+//    private class myRun extends TimerTask {
+//        myGameGUI myg;
+//        public myRun(myGameGUI graph_gui){
+//            myg =graph_gui;
+//        }
+//
+//        @Override
+//        public void run() {
+//            myg.run();
+//        }
+//    }
 
     private Graph_Algo ga;
     private int scenario_num;
@@ -52,6 +67,9 @@ public class myGameGUI implements Runnable {
         checkScenarioNum(scenario_num, game);
         this.ga = ga;
         init();
+//        Timer timer = new Timer();
+//        timer.schedule(new myRun(this),100,1);
+
     }
 
     public myGameGUI(DGraph g, int scenario_num, game_service game) {
@@ -90,10 +108,13 @@ public class myGameGUI implements Runnable {
         StdDraw.setYscale(minY - per * minY, maxY + per * maxY);
 
         //addBackgroundImg(maxX, maxY, minX, minY, per);
-        drawEdges(maxX, maxY, minX, minY, per);
+        drawEdges();
         drawVertices();
         drawFruits();
+        StdDraw.enableDoubleBuffering();
+        initRobots();
         drawRobots();
+        StdDraw.show();
         //explainGame(); //a window with the things that the user should do
         //showTime() ?
         run();
@@ -123,13 +144,9 @@ public class myGameGUI implements Runnable {
 
     /**
      * draw all the edges that come out of each vertex
-     * @param maxX
-     * @param maxY
-     * @param minX
-     * @param minY
-     * @param per
      */
-    private void drawEdges(double maxX, double maxY, double minX, double minY, double per) {
+    private void drawEdges() {
+        StdDraw.clear();
         for (node_data n : ga.getG().getV()) {
             for (int dest : ((Node) n).getNeighbors().keySet()) {
                 Point3D p_src = n.getLocation();
@@ -137,13 +154,11 @@ public class myGameGUI implements Runnable {
                 StdDraw.setPenColor(Color.GRAY);
                 StdDraw.setPenRadius(0.003);
                 StdDraw.line(p_src.x(), p_src.y(), p_dest.x(), p_dest.y());
-
                 //calculate the space to take from dest, to put the arrow
                 double x_space = p_src.x() * 0.1 + p_dest.x() * 0.9;
                 double y_space = p_src.y() * 0.1 + p_dest.y() * 0.9;
                 //add a triangle that represents the head of the arrow
                 StdDraw.picture(x_space, y_space, "data\\play-arrow.png");
-
                 //calculate the space to take from dest, to put the edge's weight
                 x_space = p_src.x() * 0.22 + p_dest.x() * 0.88;
                 y_space = p_src.y() * 0.22 + p_dest.y() * 0.88;
@@ -183,8 +198,7 @@ public class myGameGUI implements Runnable {
         }
     }
 
-    private void drawRobots() {
-        RobotCollector rc = new RobotCollector();
+    private void initRobots() {
         try {
             JSONObject line = new JSONObject(game.toString());
             int robotsSize = line.getJSONObject("GameServer").getInt("robots");
@@ -195,10 +209,16 @@ public class myGameGUI implements Runnable {
             for(int i = 0; i < robots.size(); i++) {
                 Robot r = new Robot(robots.get(i));
                 RC.addRobot(r);
-                StdDraw.picture(r.getX(), r.getY(), r.getFileName());
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void drawRobots() {
+        for(int i = 0; i < RC.getSize(); i++) {
+            Robot r = RC.getRobot(i);
+            StdDraw.picture(r.getX(), r.getY(), r.getFileName());
         }
     }
 
@@ -216,34 +236,29 @@ public class myGameGUI implements Runnable {
     }
 
     private void moveRobots() {
-        for(int i = 0; i < RC.getSize(); i++) {
-            markRobot(i);
-            List<String> log = game.move();
-            if (log != null) {
-                long t = game.timeToEnd();
-                for (int j = 0; j < log.size(); j++) {
-                    String robot_json = log.get(j);
-                    System.out.println(robot_json);
-                    Robot robot = RC.getRobot(i);
-                    if (robot.getDest() == -1) {
-                        robot.setDest(nextNode());
-                        game.chooseNextEdge(i, robot.getDest());
-                        System.out.println("Turn to node: " + robot.getDest() + "  time to end:" + (t / 1000));
-                    }
+        List<String> log = game.move();
+        if (log != null) {
+            long t = game.timeToEnd();
+            for (int j = 0; j < log.size(); j++) {
+                String robot_json = log.get(j);
+                System.out.println(robot_json);
+                Robot robot = RC.getRobot(j);
+                robot.build(robot_json);
+                if (robot.getDest() == -1) {
+                    int key_next = nextNode();
+                    if(key_next != -1)
+                        robot.setDest(key_next);
+                    game.chooseNextEdge(j, robot.getDest());
+                    System.out.println("Turn to node: " + robot.getDest() + "  time to end:" + (t / 1000));
                 }
             }
         }
     }
 
-    private void markRobot(int i) {
-    }
-
     private int nextNode() {
         if(StdDraw.isMousePressed()) {
             Node n = findNearestNode(StdDraw.mouseX(), StdDraw.mouseY());
-            if (n == null)
-                JOptionPane.showMessageDialog(null, "Please be more accurate", "Error", JOptionPane.ERROR_MESSAGE);
-            else return n.getKey();
+            if(n != null) return n.getKey();
         }
         return -1;
     }
@@ -253,7 +268,7 @@ public class myGameGUI implements Runnable {
      * @param
      */
     private Node findNearestNode(double x, double y) {
-        double eps = 0.01;
+        double eps = 0.0005;
         for(node_data n : ga.getG().getV()) {
             boolean x_fine = (n.getLocation().x() >= x - eps) && (n.getLocation().x() <= x + eps);
             if(!x_fine) continue;
@@ -263,11 +278,20 @@ public class myGameGUI implements Runnable {
         return null;
     }
 
+    private void paint(){
+        drawEdges();
+        drawVertices();
+        drawFruits();
+        drawRobots();
+        StdDraw.show();
+    }
+
     @Override
     public void run() {
         game.startGame();
         while(game.isRunning()) {
             moveRobots();
+            paint();
         }
     }
 

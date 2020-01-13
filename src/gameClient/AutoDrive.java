@@ -1,6 +1,7 @@
 package gameClient;
 
 import Server.*;
+import algorithms.Graph_Algo;
 import dataStructure.DGraph;
 import dataStructure.Node;
 import dataStructure.node_data;
@@ -12,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import utils.Point3D;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.awt.geom.Point2D;
@@ -59,12 +61,15 @@ public class AutoDrive {
             e.printStackTrace();
         }
     }
-    //List<node_data> shortestPath(int src, int dest)
-   /* private int nearestFruit(Robot id){
 
-
-
-        return Fruit.getID:
+    private List<node_data> nextStep(Robot SRC, Fruit DEST){
+        List<node_data> nextMove = new ArrayList<node_data>();
+            nextMove =  new Graph_Algo().shortestPath(SRC.getSrc(),DEST.getSRC().getKey());
+            nextMove.add(DEST.getDEST());
+        return nextMove;
     }
-*/
+
+
+
+
 }

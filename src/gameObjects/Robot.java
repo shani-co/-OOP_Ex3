@@ -76,7 +76,7 @@ public class Robot {
         build(s);
     }
 
-    private void build(String s) {
+    public void build(String s) {
         try {
             JSONObject robot = new JSONObject(s);
             JSONObject rob = robot.getJSONObject("Robot");
