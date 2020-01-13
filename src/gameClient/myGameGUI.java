@@ -8,7 +8,6 @@ import gameObjects.Fruit;
 import gameObjects.FruitCollector;
 import gameObjects.RobotCollector;
 import gameObjects.Robot;
-import gui.Graph_GUI;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.Point3D;
@@ -16,26 +15,10 @@ import utils.StdDraw;
 
 import javax.swing.*;
 import java.awt.*;
-import java.sql.Time;
 import java.util.List;
 import java.lang.String;
-import java.util.Iterator;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class myGameGUI implements Runnable {
-//    private class myRun extends TimerTask {
-//        myGameGUI myg;
-//        public myRun(myGameGUI graph_gui){
-//            myg =graph_gui;
-//        }
-//
-//        @Override
-//        public void run() {
-//            myg.run();
-//        }
-//    }
 
     private Graph_Algo ga;
     private int scenario_num;
@@ -67,9 +50,6 @@ public class myGameGUI implements Runnable {
         checkScenarioNum(scenario_num, game);
         this.ga = ga;
         init();
-//        Timer timer = new Timer();
-//        timer.schedule(new myRun(this),100,1);
-
     }
 
     public myGameGUI(DGraph g, int scenario_num, game_service game) {

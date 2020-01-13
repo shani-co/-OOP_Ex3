@@ -2,6 +2,7 @@ package gameObjects;
 
 import dataStructure.DGraph;
 import dataStructure.Node;
+import dataStructure.edge_data;
 import dataStructure.node_data;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -87,14 +88,20 @@ public class Fruit {
             this.loc_y = Double.parseDouble(spl[1]);
             if(type == 1) this.fileName = "data\\apple.png"; //apple
             if(type == -1) this.fileName = "data\\banana.png"; //banana
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    private void findEdge(DGraph graph) {
+    /*private void findEdge(DGraph graph) {
+        Iterator<node_data> itr_nodes = graph.getV().iterator();
+        while (itr_nodes.hasNext()) {
+            node_data src = itr_nodes.next();
+            Iterator<edge_data> itr_edges = graph.getE()
+        }
+    }*/
+
+    public void findEdge(DGraph graph) {
         Iterator<node_data> itr = graph.getV().iterator();
         while (itr.hasNext()) {
             node_data src = itr.next();
@@ -116,7 +123,6 @@ public class Fruit {
                     }
                     break;
                 }
-
             }
         }
     }

@@ -7,6 +7,12 @@ public class RobotCollector {
 
     private List<Robot> RC = new ArrayList<>();
 
+    //getter
+
+    public List<Robot> getRC() {
+        return this.RC;
+    }
+
     //constructor
 
     //methods
