@@ -33,7 +33,7 @@ public class SimpleGameClient {
 	public static void main(String[] a) {
 		test1();}
 	public static void test1() {
-		int scenario_num = 2;
+		int scenario_num = 0;
 		game_service game = Game_Server.getServer(scenario_num); // you have [0,23] games
 
 		game.toString();
@@ -41,6 +41,7 @@ public class SimpleGameClient {
 		String g = game.getGraph();
 		OOP_DGraph gg = new OOP_DGraph();
 		gg.init(g);
+		myGameGUI gg1 = new myGameGUI(0,game);
 		String info = game.toString();
 		JSONObject line;
 		try {

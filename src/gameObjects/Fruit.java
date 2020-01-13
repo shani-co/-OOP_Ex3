@@ -1,8 +1,15 @@
 package gameObjects;
 
+import dataStructure.DGraph;
+import dataStructure.Node;
+import dataStructure.node_data;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.StdDraw;
+
+import java.awt.geom.Point2D;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
 
 public class Fruit {
 
@@ -11,6 +18,24 @@ public class Fruit {
     private double loc_x;
     private double loc_y;
     private String fileName;
+    private int ID;
+    private node_data src;
+    private node_data dest;
+
+
+    public node_data getSRC(){return src;}
+
+    public void setSRC(node_data src){this.src=src;}
+
+    public node_data getDEST(){return dest;}
+
+    public void setDEST(node_data dest){this.dest=dest;}
+
+
+
+    public int getID(){return ID;}
+
+    public void setID(int id){this.ID=id;}
 
     public double getValue() {
         return value;
@@ -64,8 +89,37 @@ public class Fruit {
             this.loc_y = Double.parseDouble(spl[1]);
             if(type == 1) this.fileName = "data\\apple.png"; //apple
             if(type == -1) this.fileName = "data\\banana.png"; //banana
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
+
+    private void findEdge(int fruitID, DGraph graph) {
+        Iterator<node_data> itr = graph.getV().iterator();
+        while (itr.hasNext()) {
+            node_data src = itr.next();
+            Iterator<Integer> itrDestOfEdge = ((Node) src).getNeighbors().keySet().iterator();
+            while (itrDestOfEdge.hasNext()) {
+                int destOfEdge = itrDestOfEdge.next();
+                node_data dest = graph.getNode(destOfEdge);
+                double distanceEdge = Point2D.distance(src.getLocation().x(), src.getLocation().y(), dest.getLocation().x(), dest.getLocation().y());
+                double distance_ToFruitEdge = Point2D.distance(src.getLocation().x(), src.getLocation().y(), loc_x,loc_y);
+                double distance_FromFruitEdge = Point2D.distance(loc_x,loc_y, dest.getLocation().x(), dest.getLocation().y());
+                if (Math.abs(distanceEdge - (distance_ToFruitEdge + distance_FromFruitEdge)) <= 0.00004) {
+                    if(type == 1) {
+                        this.src = src;
+                    }
+                    if(type == -1) {
+                        this.dest = dest;
+                    }
+                    break;
+                }
+
+            }
+        }
+    }
+
+
 }
