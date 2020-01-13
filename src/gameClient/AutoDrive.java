@@ -8,6 +8,8 @@ import gameObjects.Fruit;
 import gameObjects.FruitCollector;
 import gameObjects.Robot;
 import gameObjects.RobotCollector;
+import org.json.JSONException;
+import org.json.JSONObject;
 import utils.Point3D;
 import utils.StdDraw;
 
@@ -15,6 +17,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.jar.JarException;
 
 public class AutoDrive implements Runnable {
 
@@ -47,10 +50,18 @@ public class AutoDrive implements Runnable {
         int fruitSize = initFruits();
         int robotSize = initRobots();
         int min = Math.min(fruitSize, robotSize);
+
+        System.out.println("f: "+ fruitSize);
+        System.out.println("r: "+ robotSize);
+
         for (int i = 0; i < min; i++) {
             Fruit f = FC.getFruit(i);
             f.findEdge(this.ga.getG());
+
+            System.out.println(f.getSRC().getKey());
+
             game.addRobot(f.getSRC().getKey());
+            //            RC.addRobot(r); ??
         }
         if (min < robotSize) { //there are more robots to locate
             for (int i = 0; i < robotSize - min; i++) {
@@ -60,12 +71,21 @@ public class AutoDrive implements Runnable {
     }
 
     private int initRobots() {
-        List<String> robots = game.getRobots();
-        for(int i = 0; i < robots.size(); i++) {
-            Robot r = new Robot(robots.get(i));
-            RC.addRobot(r);
+        int robotsSize = 0;
+        try {
+            JSONObject line = new JSONObject(game.toString());
+            robotsSize = line.getJSONObject("GameServer").getInt("robots");
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        return robots.size();
+
+        System.out.println("initRobot " + robotsSize);
+
+        /*for(int i = 0; i < robotsSize; i++) {
+            Robot r = new Robot(i);
+            RC.addRobot(r);
+        }*/
+        return robotsSize;
     }
 
     private int initFruits() {
@@ -75,13 +95,6 @@ public class AutoDrive implements Runnable {
             FC.addFruit(f);
         }
         return fruits.size();
-    }
-
-    private List<node_data> nextStep(Robot SRC, Fruit DEST){
-        List<node_data> nextMove = new ArrayList<node_data>();
-            nextMove =  new Graph_Algo().shortestPath(SRC.getSrc(),DEST.getSRC().getKey());
-            nextMove.add(DEST.getDEST());
-        return nextMove;
     }
 
     private void init() {
@@ -181,7 +194,7 @@ public class AutoDrive implements Runnable {
         }
     }
 
-    private void moveRobots() { //implement!!!
+    private void moveRobots() {
         List<String> log = game.move();
         if (log != null) {
             long t = game.timeToEnd();
@@ -190,15 +203,42 @@ public class AutoDrive implements Runnable {
                 System.out.println(robot_json);
                 Robot robot = RC.getRobot(j);
                 robot.build(robot_json);
-                /*if (robot.getDest() == -1) {
-                    int key_next = nextNode();
-                    if(key_next != -1)
-                        robot.setDest(key_next);
-                    game.chooseNextEdge(j, robot.getDest());
-                    System.out.println("Turn to node: " + robot.getDest() + "  time to end:" + (t / 1000));
-                }*/
+                if (robot.getDest() == -1) {
+                    List<node_data> path = nextStep(robot);
+                    int key_next;
+                    if(!path.isEmpty()) {
+                        for(int i = 0; i < path.size(); i++) {
+                            key_next = path.get(i).getKey();
+                            robot.setDest(key_next);
+                            game.chooseNextEdge(j, robot.getDest());
+                            System.out.println("Turn to node: " + robot.getDest() + "  time to end:" + (t / 1000));
+                        }
+                    }
+                }
             }
         }
+    }
+
+    private List<node_data> nextStep(Robot SRC) {
+        double minPath = Double.POSITIVE_INFINITY;
+        List<node_data> res = new ArrayList<node_data>();
+        Iterator<Fruit> itrFruit = FC.getFC().iterator();
+        Fruit chosen = null;
+        while (itrFruit.hasNext()) {
+            Fruit f = itrFruit.next();
+            if(!f.getIsVisit()) {
+                f.findEdge(ga.getG()); //update it's src and dest
+                double shortPathRes = ga.shortestPathDist(SRC.getSrc(), f.getSRC().getKey());
+                if(shortPathRes < minPath) {
+                    minPath = shortPathRes;
+                    res = ga.shortestPath(SRC.getSrc(), f.getSRC().getKey());
+                    res.add(f.getDEST());
+                    chosen = f;
+                }
+            }
+        }
+        if(chosen != null) chosen.setIsVisit(true);
+        return res;
     }
 
 }

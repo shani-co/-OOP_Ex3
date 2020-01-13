@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/gameObjects/FruitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/1.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/2.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameClient/testGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/testGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameObjects/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Fruit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameObjects/RobotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/RobotCollector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +126,7 @@
       <workItem from="1578826001816" duration="4032000" />
       <workItem from="1578663883560" duration="31398000" />
       <workItem from="1578815185451" duration="9533000" />
-      <workItem from="1578908761850" duration="25341000" />
+      <workItem from="1578908761850" duration="30824000" />
     </task>
     <task id="LOCAL‎00001" summary="made function AutoDrive- locate robot">
       <created>1578828961305</created>
@@ -170,7 +164,13 @@
       <option name="presentableId" value="LOCAL‎00006" />
       <updated>1578931337003</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎00007" summary="continue autoGame">
+      <created>1578940998151</created>
+      <option name="number" value="LOCAL‎00007" />
+      <option name="presentableId" value="LOCAL‎00007" />
+      <updated>1578940998151</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +197,8 @@
     <MESSAGE value="continue firstLocation" />
     <MESSAGE value="continue firstLocation1" />
     <MESSAGE value="finished manual option" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished manual option" />
+    <MESSAGE value="continue autoGame" />
+    <option name="LAST_COMMIT_MESSAGE" value="continue autoGame" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1578918940040">
@@ -208,26 +209,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="227" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1578936295271" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578931336370">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578940996309">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578931336370" />
-    <state width="1237" height="64" key="GridCell.Tab.0.bottom" timestamp="1578940783246">
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578940996309" />
+    <state width="1237" height="77" key="GridCell.Tab.0.bottom" timestamp="1578946812180">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="64" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1578940783246" />
-    <state width="1237" height="64" key="GridCell.Tab.0.center" timestamp="1578940783246">
+    <state width="1237" height="77" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1578946812180" />
+    <state width="1237" height="77" key="GridCell.Tab.0.center" timestamp="1578946812180">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="64" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1578940783246" />
-    <state width="1237" height="64" key="GridCell.Tab.0.left" timestamp="1578940783246">
+    <state width="1237" height="77" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1578946812180" />
+    <state width="1237" height="77" key="GridCell.Tab.0.left" timestamp="1578946812180">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="64" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1578940783246" />
-    <state width="1237" height="64" key="GridCell.Tab.0.right" timestamp="1578940783246">
+    <state width="1237" height="77" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1578946812180" />
+    <state width="1237" height="77" key="GridCell.Tab.0.right" timestamp="1578946812180">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="64" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578940783246" />
+    <state width="1237" height="77" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578946812180" />
     <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1578928303852">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -244,10 +245,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1578928303852" />
-    <state x="233" y="75" key="Vcs.Push.Dialog.v2" timestamp="1578931338542">
+    <state x="233" y="75" key="Vcs.Push.Dialog.v2" timestamp="1578940999983">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="75" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1578931338542" />
+    <state x="233" y="75" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1578940999983" />
     <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1578908763186">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

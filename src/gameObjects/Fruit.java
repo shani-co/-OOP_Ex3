@@ -22,7 +22,15 @@ public class Fruit {
     private int ID;
     private node_data src;
     private node_data dest;
+    private boolean isVisit = false;
 
+    public boolean getIsVisit() {
+        return this.isVisit;
+    }
+
+    public void setIsVisit(boolean b) {
+        this.isVisit = b;
+    }
 
     public node_data getSRC(){return src;}
 
