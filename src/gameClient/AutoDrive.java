@@ -28,6 +28,7 @@ public class AutoDrive implements Runnable {
     private int scenario_num;
     private RobotCollector RC = new RobotCollector();
     private FruitCollector FC = new FruitCollector();
+    double minX,maxX,minY,maxY;
 
     public AutoDrive() {
         askScenarioNum();
@@ -77,35 +78,21 @@ public class AutoDrive implements Runnable {
         int fruitSize = initFruits();
         int robotSize = initRobots();
         int min = Math.min(fruitSize, robotSize);
-
-        System.out.println("f: "+ fruitSize);
-        System.out.println("r: "+ robotSize);
-
-
         for (int i = 0; i < min; i++) {
             Fruit f = FC.getFruit(i);
             f.findEdge(this.ga.getG());
-
-            System.out.println(f.getSRC().getKey());
-
-
             game.addRobot(f.getSRC().getKey());
-
         }
         if (min < robotSize) { //there are more robots to locate
             for (int i = 0; i < robotSize - min; i++) {
                 game.addRobot(i);
-
-
             }
         }
-
-           List<String> robots = game.getRobots();
-            for(int i = 0; i < robots.size(); i++) {
-                Robot f = new Robot(robots.get(i));
-                RC.addRobot(f);
-                System.out.println(i);
-            }
+        List<String> robots = game.getRobots();
+        for(int i = 0; i < robots.size(); i++) {
+            Robot f = new Robot(robots.get(i));
+            RC.addRobot(f);
+        }
     }
 
     private int initRobots() {
@@ -113,13 +100,6 @@ public class AutoDrive implements Runnable {
         try {
             JSONObject line = new JSONObject(game.toString());
             robotsSize = line.getJSONObject("GameServer").getInt("robots");
-
-           /* List<String> robots = game.getRobots();
-            for(int i = 0; i < robots.size(); i++) {
-                Robot f = new Robot(robots.get(i));
-                RC.addRobot(f);
-            }*/
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -162,7 +142,10 @@ public class AutoDrive implements Runnable {
         StdDraw.enableDoubleBuffering();
         drawRobots();
         StdDraw.show();
-        //showTime() ?
+        this.minX = minX;
+        this.minY = minY;
+        this.maxX = maxX;
+        this.maxY = maxY;
         run();
     }
 
@@ -211,9 +194,7 @@ public class AutoDrive implements Runnable {
     }
 
     private void drawRobots() {
-        System.out.println("hiiiiiiiiiiii bitch");
         for(Robot r : RC.getRC()) {
-            System.out.println(r.getX());
             StdDraw.picture(r.getX(), r.getY(), r.getFileName());
         }
     }
@@ -223,7 +204,27 @@ public class AutoDrive implements Runnable {
         drawVertices();
         drawFruits();
         drawRobots();
+        showTime(maxX, minY,minX,maxY);
         StdDraw.show();
+    }
+
+    private void showTime(double maxX, double minY, double minX, double maxY) {
+        long time = game.timeToEnd();
+        StdDraw.setPenColor();
+        StdDraw.setFont(new Font("Ariel", Font.PLAIN, 15));
+        StdDraw.text((maxX+minX)*0.5, (0.1*minY+maxY*0.9), "Time Left: "+time/1000+"."+time%1000);
+        if(time%1000 == -1) {
+            StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\gameOver.jpg");
+            String gameServer = game.toString();
+            try {
+                JSONObject line = new JSONObject(gameServer);
+                double score = line.getJSONObject("GameServer").getDouble("grade");
+                StdDraw.setPenColor(Color.WHITE);
+                StdDraw.text((maxX+minX)*0.5, 0.3*maxY+minY*0.7, "YOUR SCORE: "+score+"");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

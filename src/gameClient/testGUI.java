@@ -11,7 +11,7 @@ public class testGUI {
 
         /*int scenario_num = 0;
         game_service game = Game_Server.getServer(scenario_num);*/
-        myGameGUI gameGUI = new myGameGUI();
-        //AutoDrive game1 = new AutoDrive(ga, game);
+        //myGameGUI gameGUI = new myGameGUI();
+        AutoDrive game1 = new AutoDrive();
     }
 }
