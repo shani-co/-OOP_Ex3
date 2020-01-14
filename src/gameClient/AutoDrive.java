@@ -36,7 +36,7 @@ public class AutoDrive implements Runnable {
         DGraph dGraph = new DGraph(g);
         this.ga = new Graph_Algo(dGraph);
         init();
-    }
+     }
 
     public AutoDrive(Graph_Algo ga) {
         askScenarioNum();
