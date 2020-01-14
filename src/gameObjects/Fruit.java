@@ -11,6 +11,7 @@ import utils.StdDraw;
 import java.awt.geom.Point2D;
 import java.util.IdentityHashMap;
 import java.util.Iterator;
+import java.util.List;
 
 public class Fruit {
 
@@ -121,11 +122,11 @@ public class Fruit {
                 double distance_ToFruitEdge = Point2D.distance(src.getLocation().x(), src.getLocation().y(), loc_x,loc_y);
                 double distance_FromFruitEdge = Point2D.distance(loc_x,loc_y, dest.getLocation().x(), dest.getLocation().y());
                 if (Math.abs(distanceEdge - (distance_ToFruitEdge + distance_FromFruitEdge)) <= 0.00004) {
-                    if(type == 1) {
+                    if(type == 1 && src.getKey()<dest.getKey()) {
                         this.src = src;
                         this.dest = dest;
                     }
-                    if(type == -1) {
+                    if(type == -1 && src.getKey()<dest.getKey()) {
                         this.src = dest;
                         this.dest = src;
                     }

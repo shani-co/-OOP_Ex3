@@ -54,20 +54,31 @@ public class AutoDrive implements Runnable {
         System.out.println("f: "+ fruitSize);
         System.out.println("r: "+ robotSize);
 
+
         for (int i = 0; i < min; i++) {
             Fruit f = FC.getFruit(i);
             f.findEdge(this.ga.getG());
 
             System.out.println(f.getSRC().getKey());
 
+
             game.addRobot(f.getSRC().getKey());
-            //            RC.addRobot(r); ??
+
         }
         if (min < robotSize) { //there are more robots to locate
             for (int i = 0; i < robotSize - min; i++) {
                 game.addRobot(i);
+
+
             }
         }
+
+           List<String> robots = game.getRobots();
+            for(int i = 0; i < robots.size(); i++) {
+                Robot f = new Robot(robots.get(i));
+                RC.addRobot(f);
+                System.out.println(i);
+            }
     }
 
     private int initRobots() {
@@ -75,16 +86,16 @@ public class AutoDrive implements Runnable {
         try {
             JSONObject line = new JSONObject(game.toString());
             robotsSize = line.getJSONObject("GameServer").getInt("robots");
+
+           /* List<String> robots = game.getRobots();
+            for(int i = 0; i < robots.size(); i++) {
+                Robot f = new Robot(robots.get(i));
+                RC.addRobot(f);
+            }*/
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        System.out.println("initRobot " + robotsSize);
-
-        /*for(int i = 0; i < robotsSize; i++) {
-            Robot r = new Robot(i);
-            RC.addRobot(r);
-        }*/
         return robotsSize;
     }
 
@@ -93,6 +104,7 @@ public class AutoDrive implements Runnable {
         for(int i = 0; i < fruits.size(); i++) {
             Fruit f = new Fruit(fruits.get(i));
             FC.addFruit(f);
+            f.setID(i);
         }
         return fruits.size();
     }
@@ -172,7 +184,9 @@ public class AutoDrive implements Runnable {
     }
 
     private void drawRobots() {
+        System.out.println("hiiiiiiiiiiii bitch");
         for(Robot r : RC.getRC()) {
+            System.out.println(r.getX());
             StdDraw.picture(r.getX(), r.getY(), r.getFileName());
         }
     }

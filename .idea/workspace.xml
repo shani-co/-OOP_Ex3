@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/gameOver.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/1.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/2.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/SimpleGameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/SimpleGameClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/myGameGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameClient/testGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/testGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameObjects/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Fruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameObjects/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Robot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +36,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1WCqMoBSQ3QuQapl269vcej4Y7n" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -68,18 +67,6 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.testGUI">
     <configuration name="SimpleGameClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -115,6 +102,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -129,7 +128,8 @@
       <workItem from="1578826001816" duration="4032000" />
       <workItem from="1578663883560" duration="31398000" />
       <workItem from="1578815185451" duration="9533000" />
-      <workItem from="1578908761850" duration="30824000" />
+      <workItem from="1578908761850" duration="33397000" />
+      <workItem from="1578993641904" duration="10003000" />
     </task>
     <task id="LOCAL‎00001" summary="made function AutoDrive- locate robot">
       <created>1578828961305</created>
@@ -173,7 +173,13 @@
       <option name="presentableId" value="LOCAL‎00007" />
       <updated>1578940998151</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL‎00008" summary="continue autoGame">
+      <created>1578946852110</created>
+      <option name="number" value="LOCAL‎00008" />
+      <option name="presentableId" value="LOCAL‎00008" />
+      <updated>1578946852110</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,54 +218,66 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="227" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1578936295271" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1578940996309">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1579026529861">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1578940996309" />
-    <state width="1237" height="77" key="GridCell.Tab.0.bottom" timestamp="1578946812180">
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1579026529861" />
+    <state width="1237" height="190" key="GridCell.Tab.0.bottom" timestamp="1579026439373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="77" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1578946812180" />
-    <state width="1237" height="77" key="GridCell.Tab.0.center" timestamp="1578946812180">
+    <state width="1237" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579026439373" />
+    <state width="1237" height="190" key="GridCell.Tab.0.center" timestamp="1579026439373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="77" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1578946812180" />
-    <state width="1237" height="77" key="GridCell.Tab.0.left" timestamp="1578946812180">
+    <state width="1237" height="190" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579026439373" />
+    <state width="1237" height="190" key="GridCell.Tab.0.left" timestamp="1579026439373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="77" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1578946812180" />
-    <state width="1237" height="77" key="GridCell.Tab.0.right" timestamp="1578946812180">
+    <state width="1237" height="190" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579026439373" />
+    <state width="1237" height="190" key="GridCell.Tab.0.right" timestamp="1579026439373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="77" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1578946812180" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1578928303852">
+    <state width="1237" height="190" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579026439373" />
+    <state width="1237" height="190" key="GridCell.Tab.1.bottom" timestamp="1579026439373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1578928303852" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1578928303852">
+    <state width="1237" height="190" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579026439373" />
+    <state width="1237" height="190" key="GridCell.Tab.1.center" timestamp="1579026439373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1578928303852" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1578928303852">
+    <state width="1237" height="190" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1579026439373" />
+    <state width="1237" height="190" key="GridCell.Tab.1.left" timestamp="1579026439373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1578928303852" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1578928303852">
+    <state width="1237" height="190" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1579026439373" />
+    <state width="1237" height="190" key="GridCell.Tab.1.right" timestamp="1579026439373">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1578928303852" />
-    <state x="233" y="75" key="Vcs.Push.Dialog.v2" timestamp="1578940999983">
+    <state width="1237" height="190" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1579026439373" />
+    <state x="121" y="57" key="MergeDialog" timestamp="1579026554664">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="75" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1578940999983" />
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1578908763186">
+    <state x="121" y="57" key="MergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1579026554664" />
+    <state x="354" y="58" key="MultipleFileMergeDialog" timestamp="1579026556215">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1578908763186" />
-    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1578828712156">
+    <state x="354" y="58" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1579026556215" />
+    <state x="233" y="75" key="Vcs.Push.Dialog.v2" timestamp="1578946854675">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1578828712156" />
+    <state x="233" y="75" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1578946854675" />
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1578993641486">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1578993641486" />
+    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579026534767">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1579026534767" />
+    <state x="203" y="78" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1579024703487">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="203" y="78" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1280.680@0.0.1280.680" timestamp="1579024703487" />
     <state x="343" y="181" width="1010" height="665" key="dock-window-1" timestamp="1578915942589">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -272,5 +290,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1578911956516" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/gameClient/AutoDrive.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="FC.FC.get(0).type" />
+        <watch expression="this" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

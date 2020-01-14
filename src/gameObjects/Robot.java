@@ -93,6 +93,7 @@ public class Robot {
             if(id == 2) this.fileName = "data\\wolverine.png";
             if(id == 3) this.fileName = "data\\thor.png";
             if(id == 4) this.fileName = "data\\groot.png";
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
