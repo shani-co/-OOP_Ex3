@@ -43,7 +43,7 @@ public class SimpleGameClient {
 
 		String g = game.getGraph();
 		DGraph gg = new DGraph(g);
-		myGameGUI gg1 = new myGameGUI(gg, scenario_num, game);
+		myGameGUI gg1 = new myGameGUI();
 		String info = game.toString();
 		JSONObject line;
 		try {

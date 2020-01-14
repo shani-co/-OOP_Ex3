@@ -25,6 +25,7 @@ public class myGameGUI implements Runnable {
     private game_service game;
     private RobotCollector RC = new RobotCollector();
     private FruitCollector FC = new FruitCollector();
+    double minX,maxX,minY,maxY;
 
     //getter
     public Graph_Algo getGA() {
@@ -40,32 +41,47 @@ public class myGameGUI implements Runnable {
     }
 
     //constructor
-    public myGameGUI(int scenario_num, game_service game) {
-        checkScenarioNum(scenario_num, game);
-        this.ga = new Graph_Algo();
+    public myGameGUI() {
+        askScenarioNum();
+        String g = game.getGraph();
+        DGraph dGraph = new DGraph(g);
+        this.ga = new Graph_Algo(dGraph);
         init();
     }
 
-    public myGameGUI(Graph_Algo ga, int scenario_num, game_service game) {
-        checkScenarioNum(scenario_num, game);
+    public myGameGUI(Graph_Algo ga) {
+        askScenarioNum();
         this.ga = ga;
         init();
     }
 
-    public myGameGUI(DGraph g, int scenario_num, game_service game) {
-        checkScenarioNum(scenario_num, game);
+    public myGameGUI(DGraph g) {
+        askScenarioNum();
         Graph_Algo ga = new Graph_Algo();
         ga.init(g);
         this.ga = ga;
         init();
     }
 
-    private void checkScenarioNum(int scenario_num, game_service game) {
+    private void askScenarioNum() {
+        try {
+            String num = (String)JOptionPane.showInputDialog(null,
+                "Please choose the scenario num of the game\n"+
+                        "enter a number from 0 to 23");
+            checkScenarioNum(Integer.parseInt(num));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Wrong input",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void checkScenarioNum(int scenario_num) {
         if(scenario_num < 0 || scenario_num > 23)
             throw new RuntimeException("The number of game you chose is not exist!");
         else {
-            this.game = game;
             this.scenario_num = scenario_num;
+            game_service game = Game_Server.getServer(scenario_num);
+            this.game = game;
         }
     }
 
@@ -95,9 +111,17 @@ public class myGameGUI implements Runnable {
         initRobots();
         drawRobots();
         StdDraw.show();
-        //explainGame(); //a window with the things that the user should do
-        //showTime() ?
+        this.minX = minX;
+        this.minY = minY;
+        this.maxX = maxX;
+        this.maxY = maxY;
+        explainGame(); //a window with the things that the user should do
         run();
+    }
+
+    private void explainGame() {
+        JOptionPane.showMessageDialog(null,"When the game starts, click the next vertex you want to reach. \n" +
+                "The goal: Collect as much fruit as you can to earn the most points. GOOD LUCK");
     }
 
     /**
@@ -215,6 +239,25 @@ public class myGameGUI implements Runnable {
         }
     }
 
+    private void showTime(double maxX, double minY, double minX, double maxY) {
+        long time = game.timeToEnd();
+        StdDraw.setPenColor();
+        StdDraw.setFont(new Font("Ariel", Font.PLAIN, 15));
+        StdDraw.text((maxX+minX)*0.5, (0.1*minY+maxY*0.9), "Time Left: "+time/1000+"."+time%1000);
+        if(time%1000 == -1) {
+            StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\gameOver.jpg");
+            String gameServer = game.toString();
+            try {
+                JSONObject line = new JSONObject(gameServer);
+                double score = line.getJSONObject("GameServer").getDouble("grade");
+                StdDraw.setPenColor(Color.WHITE);
+                StdDraw.text((maxX+minX)*0.5, 0.3*maxY+minY*0.7, "YOUR SCORE: "+score+"");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void moveRobots() {
         List<String> log = game.move();
         if (log != null) {
@@ -263,6 +306,7 @@ public class myGameGUI implements Runnable {
         drawVertices();
         drawFruits();
         drawRobots();
+        showTime(maxX, minY,minX,maxY);
         StdDraw.show();
     }
 
