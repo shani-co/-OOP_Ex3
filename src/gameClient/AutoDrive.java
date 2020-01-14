@@ -2,6 +2,7 @@ package gameClient;
 
 import Server.*;
 import algorithms.Graph_Algo;
+import dataStructure.DGraph;
 import dataStructure.Node;
 import dataStructure.node_data;
 import gameObjects.Fruit;
@@ -13,6 +14,7 @@ import org.json.JSONObject;
 import utils.Point3D;
 import utils.StdDraw;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,22 +30,47 @@ public class AutoDrive implements Runnable {
     private FruitCollector FC = new FruitCollector();
 
     public AutoDrive() {
-        this.scenario_num = 0;
+        askScenarioNum();
+        String g = game.getGraph();
+        DGraph dGraph = new DGraph(g);
+        this.ga = new Graph_Algo(dGraph);
         init();
     }
 
-    public AutoDrive(Graph_Algo graph, game_service game) {
-        this.scenario_num=0;
-        this.ga = graph;
-        this.game = game;
+    public AutoDrive(Graph_Algo ga) {
+        askScenarioNum();
+        this.ga = ga;
         init();
     }
 
-    public AutoDrive(Graph_Algo graph, game_service game, int scenario_num) {
-        this.scenario_num = scenario_num;
-        this.ga = graph;
-        this.game = game;
+    public AutoDrive(DGraph graph) {
+        askScenarioNum();
+        Graph_Algo ga = new Graph_Algo();
+        ga.init(graph);
+        this.ga = ga;
         init();
+    }
+
+    private void askScenarioNum() {
+        try {
+            String num = (String) JOptionPane.showInputDialog(null,
+                    "Please choose the scenario num of the game\n"+
+                            "enter a number from 0 to 23");
+            checkScenarioNum(Integer.parseInt(num));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Wrong input",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void checkScenarioNum(int scenario_num) {
+        if(scenario_num < 0 || scenario_num > 23)
+            throw new RuntimeException("The number of game you chose is not exist!");
+        else {
+            this.scenario_num = scenario_num;
+            game_service game = Game_Server.getServer(scenario_num);
+            this.game = game;
+        }
     }
 
     private void findFirstLocationToRobot() {
