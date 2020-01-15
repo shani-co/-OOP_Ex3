@@ -1,8 +1,11 @@
 package gameObjects;
 
 import Server.game_service;
+import dataStructure.node_data;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class Robot {
     private int id;
@@ -12,8 +15,17 @@ public class Robot {
     private double loc_x;
     private double loc_y;
     private String fileName;
+    private ArrayList<node_data> myPath = new ArrayList<node_data>();
 
     //getters and setters
+
+    public ArrayList<node_data> getMyPath() {
+        return this.myPath;
+    }
+
+    public void setMyPath(ArrayList<node_data> path) {
+        this.myPath = path;
+    }
 
     public int getId() {
         return id;
