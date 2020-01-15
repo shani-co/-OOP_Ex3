@@ -212,18 +212,7 @@ public class AutoDrive implements Runnable {
         StdDraw.setPenColor();
         StdDraw.setFont(new Font("Ariel", Font.PLAIN, 15));
         StdDraw.text((maxX+minX)*0.5, (0.1*minY+maxY*0.9), "Time Left: "+time/1000+"."+time%1000);
-        if(time%1000 == -1) {
-            StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\gameOver.jpg");
-            String gameServer = game.toString();
-            try {
-                JSONObject line = new JSONObject(gameServer);
-                double score = line.getJSONObject("GameServer").getDouble("grade");
-                StdDraw.setPenColor(Color.WHITE);
-                StdDraw.text((maxX+minX)*0.5, 0.3*maxY+minY*0.7, "YOUR SCORE: "+score+"");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
+        if(time%1000 == -1) gameOver();
     }
 
     @Override
@@ -233,10 +222,40 @@ public class AutoDrive implements Runnable {
             moveRobots();
             paint();
         }
+        if(!game.isRunning()){
+            gameOver();
+            String gameServer = game.toString();
+            try {
+                JSONObject line = new JSONObject(gameServer);
+                double score = line.getJSONObject("GameServer").getDouble("grade");
+                System.out.println("SCORE: "+score);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void gameOver() {
+        StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\gameOver.jpg");
+        String gameServer = game.toString();
+        try {
+            JSONObject line = new JSONObject(gameServer);
+            double score = line.getJSONObject("GameServer").getDouble("grade");
+            StdDraw.setPenColor(Color.WHITE);
+            StdDraw.text((maxX+minX)*0.5, 0.3*maxY+minY*0.7, "YOUR SCORE: "+score+"");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     private void moveRobots() {
         List<String> log = game.move();
+        for(Fruit f : FC.getFC()) {
+            for(String s : game.getFruits()) {
+                f.build(s);
+            }
+        }
+
         if (log != null) {
             long t = game.timeToEnd();
             for (int i = 0; i < log.size(); i++) {
@@ -244,19 +263,12 @@ public class AutoDrive implements Runnable {
                 //.out.println(robot_json);
                 Robot r = RC.getRobot(i);
                 r.build(robot_json);
-                for(Fruit f : FC.getFC()) {
-                    for(String s : game.getFruits()) {
-                        f.build(s);
-                    }
-                }
                // if (r.getSrc() == r.getDest()) r.setDest(-1);
                 if ((r.getDest() == -1) && (r.getMyPath().isEmpty())) {
-                    System.out.println("got hetre");
                     List<node_data> path = nextStep(r);
                     r.setMyPath((ArrayList<node_data>) path);
                 }
                 else if((r.getDest() == -1) && !(r.getMyPath().isEmpty())) {
-                    System.out.println("yasmin bitch");
                     int key_next;
                     key_next = r.getMyPath().get(0).getKey();
                     r.setDest(key_next);
@@ -269,7 +281,6 @@ public class AutoDrive implements Runnable {
     }
 
     private List<node_data> nextStep(Robot SRC) {
-
         double minPath = Double.POSITIVE_INFINITY;
         List<node_data> res = new ArrayList<node_data>();
         Iterator<Fruit> itrFruit = FC.getFC().iterator();
@@ -281,7 +292,6 @@ public class AutoDrive implements Runnable {
                 double shortPathRes = ga.shortestPathDist(SRC.getSrc(), f.getSRC().getKey());
                 if(shortPathRes < minPath) {
                     res.clear();
-                    System.out.println("got hre");
                     minPath = shortPathRes;
                     res.addAll(ga.shortestPath(SRC.getSrc(), f.getSRC().getKey()));
                     System.out.println(res.size());
@@ -292,28 +302,6 @@ public class AutoDrive implements Runnable {
             }
        }
         if(chosen != null) chosen.setIsVisit(true);
-        for(int j = 0; j < res.size(); j++){
-            System.out.print(res.get(j)+",jaja");
-        }
         return res;
     }
-
-    /**
-     * a very simple random walk implementation!
-     * @param g
-     * @param src
-     * @return
-     */
-    private static int nextNode(graph g, int src) {
-        int ans = -1;
-        Collection<edge_data> ee = g.getE(src);
-        Iterator<edge_data> itr = ee.iterator();
-        int s = ee.size();
-        int r = (int)(Math.random()*s);
-        int i=0;
-        while(i<r) {itr.next();i++;}
-        ans = itr.next().getDest();
-        return ans;
-    }
-
 }
