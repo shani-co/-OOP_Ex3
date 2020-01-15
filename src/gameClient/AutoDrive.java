@@ -245,6 +245,7 @@ public class AutoDrive implements Runnable {
                 System.out.println(robot_json);
                 Robot robot = RC.getRobot(j);
                 robot.build(robot_json);
+                if (robot.getSrc()==robot.getDest()) robot.setDest(-1);
                 if (robot.getDest() == -1) {
                     List<node_data> path = nextStep(robot);
                     int key_next;
