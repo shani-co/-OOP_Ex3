@@ -10,7 +10,12 @@ import dataStructure.Node;
 import dataStructure.node_data;
 import utils.Point3D;
 
+import Server.Game_Server;
+import Server.game_service;
+
 public class Test {
+
+    private static game_service game;
 
     public static void amichaiTest() {
         DGraph test = new DGraph();
@@ -219,11 +224,28 @@ public class Test {
         System.out.println(GA.isConnected());
     }
 
+    public static void test7(int num) {
+        game = Game_Server.getServer(num);
+        String g = game.getGraph();
+        DGraph dGraph = new DGraph(g);
+        Graph_Algo ga = new Graph_Algo(dGraph);
+
+        System.out.println(ga.shortestPathDist(2,16));
+        for(node_data n : ga.shortestPath(2,15)) {
+            System.out.print(n.getKey() + ",");
+        }
+        System.out.println(ga.shortestPathDist(3,16));
+        for(node_data n : ga.shortestPath(3,15)) {
+            System.out.print(n.getKey() + ",");
+        }
+    }
+
     public static void main(String[] args) {
         //test3();
         //test2();
         //test4();
         //test5();
-        test6();
+        //test6();
+        test7(5);
     }
 }

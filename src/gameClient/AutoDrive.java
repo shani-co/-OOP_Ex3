@@ -92,7 +92,6 @@ public class AutoDrive implements Runnable {
             Robot f = new Robot(robots.get(i));
             RC.addRobot(f);
         }
-        game.startGame();
     }
 
     private int initRobots() {
@@ -229,6 +228,7 @@ public class AutoDrive implements Runnable {
 
     @Override
     public void run() {
+        game.startGame();
         while(game.isRunning()) {
             moveRobots();
             paint();
@@ -241,15 +241,22 @@ public class AutoDrive implements Runnable {
             long t = game.timeToEnd();
             for (int i = 0; i < log.size(); i++) {
                 String robot_json = log.get(i);
-                System.out.println(robot_json);
+                //.out.println(robot_json);
                 Robot r = RC.getRobot(i);
                 r.build(robot_json);
-                if (r.getSrc() == r.getDest()) r.setDest(-1);
+                for(Fruit f : FC.getFC()) {
+                    for(String s : game.getFruits()) {
+                        f.build(s);
+                    }
+                }
+               // if (r.getSrc() == r.getDest()) r.setDest(-1);
                 if ((r.getDest() == -1) && (r.getMyPath().isEmpty())) {
+                    System.out.println("got hetre");
                     List<node_data> path = nextStep(r);
                     r.setMyPath((ArrayList<node_data>) path);
                 }
-                if((r.getDest() == -1) && !(r.getMyPath().isEmpty())) {
+                else if((r.getDest() == -1) && !(r.getMyPath().isEmpty())) {
+                    System.out.println("yasmin bitch");
                     int key_next;
                     key_next = r.getMyPath().get(0).getKey();
                     r.setDest(key_next);
@@ -262,6 +269,7 @@ public class AutoDrive implements Runnable {
     }
 
     private List<node_data> nextStep(Robot SRC) {
+
         double minPath = Double.POSITIVE_INFINITY;
         List<node_data> res = new ArrayList<node_data>();
         Iterator<Fruit> itrFruit = FC.getFC().iterator();
@@ -272,15 +280,21 @@ public class AutoDrive implements Runnable {
                 f.findEdge(ga.getG()); //update it's src and dest
                 double shortPathRes = ga.shortestPathDist(SRC.getSrc(), f.getSRC().getKey());
                 if(shortPathRes < minPath) {
+                    res.clear();
+                    System.out.println("got hre");
                     minPath = shortPathRes;
-                    res = ga.shortestPath(SRC.getSrc(), f.getSRC().getKey());
+                    res.addAll(ga.shortestPath(SRC.getSrc(), f.getSRC().getKey()));
+                    System.out.println(res.size());
                     res.add(f.getDEST());
                     chosen = f;
                     if(shortPathRes == 0) break; //to not do unnecessary iterations (0 is the minimum for sure)
                 }
             }
-        }
+       }
         if(chosen != null) chosen.setIsVisit(true);
+        for(int j = 0; j < res.size(); j++){
+            System.out.print(res.get(j)+",jaja");
+        }
         return res;
     }
 

@@ -87,6 +87,10 @@ public class Fruit {
 
     //constructor
     public Fruit(String s) {
+       build(s);
+    }
+
+    public void build(String s) {
         try {
             JSONObject line = new JSONObject(s);
             this.value = line.getJSONObject("Fruit").getDouble("value");
@@ -97,6 +101,7 @@ public class Fruit {
             this.loc_y = Double.parseDouble(spl[1]);
             if(type == 1) this.fileName = "data\\apple.png"; //apple
             if(type == -1) this.fileName = "data\\banana.png"; //banana
+            this.isVisit = false;
         } catch (JSONException e) {
             e.printStackTrace();
         }
