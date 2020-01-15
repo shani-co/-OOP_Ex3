@@ -276,6 +276,7 @@ public class AutoDrive implements Runnable {
                     res = ga.shortestPath(SRC.getSrc(), f.getSRC().getKey());
                     res.add(f.getDEST());
                     chosen = f;
+                    if(shortPathRes == 0) break; //to not do unnecessary iterations (0 is the minimum for sure)
                 }
             }
         }
