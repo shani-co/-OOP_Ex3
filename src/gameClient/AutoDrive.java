@@ -92,6 +92,7 @@ public class AutoDrive implements Runnable {
             Robot f = new Robot(robots.get(i));
             RC.addRobot(f);
         }
+        game.startGame();
     }
 
     private int initRobots() {
@@ -228,11 +229,11 @@ public class AutoDrive implements Runnable {
 
     @Override
     public void run() {
-        game.startGame();
         while(game.isRunning()) {
             moveRobots();
             paint();
         }
+        System.out.println("Game is ended"+game.toString());
     }
 
     private void moveRobots() {
@@ -246,13 +247,23 @@ public class AutoDrive implements Runnable {
                 r.build(robot_json);
                 if (r.getSrc() == r.getDest()) r.setDest(-1);
                 if (r.getDest() == -1) {
+                    System.out.println("here");
                     List<node_data> path = nextStep(r);
+                    System.out.println("here2 "+ path.get(0));
+
                     int key_next;
                     if(!path.isEmpty()) {
                         for(int j = 0; j < path.size(); j++) {
                             key_next = path.get(j).getKey();
+
                             r.setDest(key_next);
-                            game.chooseNextEdge(i, r.getDest());
+                            if (key_next==-1){
+                                System.out.println("not Good");
+                            }
+                            else {
+                                System.out.println("working good");
+                            }
+                            game.chooseNextEdge(i, key_next);
                             System.out.println("Turn to node: " + r.getDest() + "  time to end:" + (t / 1000));
                         }
                     }

@@ -198,7 +198,13 @@
       <option name="presentableId" value="LOCAL‎00011" />
       <updated>1579082353431</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL‎00012" summary="add if to nextStep method">
+      <created>1579083456572</created>
+      <option name="number" value="LOCAL‎00012" />
+      <option name="presentableId" value="LOCAL‎00012" />
+      <updated>1579083456572</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,7 +235,8 @@
     <MESSAGE value="robots can move!!" />
     <MESSAGE value="delete gui package from the Ex2 and add KML_Logger class (not implement)" />
     <MESSAGE value="try to fix bug in AutoDrive" />
-    <option name="LAST_COMMIT_MESSAGE" value="try to fix bug in AutoDrive" />
+    <MESSAGE value="add if to nextStep method" />
+    <option name="LAST_COMMIT_MESSAGE" value="add if to nextStep method" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1578918940040">
@@ -318,11 +325,19 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/gameClient/AutoDrive.java</url>
-          <line>263</line>
+          <line>274</line>
           <properties class="gameClient.AutoDrive" method="nextStep">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/gameClient/AutoDrive.java</url>
+          <line>238</line>
+          <properties class="gameClient.AutoDrive" method="moveRobots">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
