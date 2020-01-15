@@ -29,6 +29,7 @@ public class AutoDrive implements Runnable {
     private FruitCollector FC = new FruitCollector();
     double minX,maxX,minY,maxY;
 
+    //constructor
     public AutoDrive() {
         askScenarioNum();
         String g = game.getGraph();
@@ -37,12 +38,14 @@ public class AutoDrive implements Runnable {
         init();
      }
 
+    //constructor
     public AutoDrive(Graph_Algo ga) {
         askScenarioNum();
         this.ga = ga;
         init();
     }
 
+    //constructor
     public AutoDrive(DGraph graph) {
         askScenarioNum();
         Graph_Algo ga = new Graph_Algo();
@@ -51,6 +54,9 @@ public class AutoDrive implements Runnable {
         init();
     }
 
+    /**
+     * ask from the player in which map he want to play
+     */
     private void askScenarioNum() {
         try {
             String num = (String) JOptionPane.showInputDialog(null,
@@ -63,6 +69,10 @@ public class AutoDrive implements Runnable {
         }
     }
 
+    /**
+     * check that the player chose an existing map
+     * @param scenario_num the map number
+     */
     private void checkScenarioNum(int scenario_num) {
         if(scenario_num < 0 || scenario_num > 23)
             throw new RuntimeException("The number of game you chose is not exist!");
@@ -73,6 +83,10 @@ public class AutoDrive implements Runnable {
         }
     }
 
+    /**
+     * this function locate the best start node for the robots.
+     * she locate the src node of each fruit, and put the robot on that src.
+     */
     private void findFirstLocationToRobot() {
         int fruitSize = initFruits();
         int robotSize = initRobots();
@@ -94,6 +108,10 @@ public class AutoDrive implements Runnable {
         }
     }
 
+    /**
+     * method that makes a JSONObject and checks the robot's size
+     * @return robot's size
+     */
     private int initRobots() {
         int robotsSize = 0;
         try {
@@ -105,6 +123,10 @@ public class AutoDrive implements Runnable {
         return robotsSize;
     }
 
+    /**
+     * add all the fruits to the FC
+     * @return fruit's size
+     */
     private int initFruits() {
         List<String> fruits = game.getFruits();
         for(int i = 0; i < fruits.size(); i++) {
@@ -115,6 +137,10 @@ public class AutoDrive implements Runnable {
         return fruits.size();
     }
 
+    /**
+     * build the show window.
+     * draw on the window: the graph, all the robots, fruits.
+     */
     private void init() {
         StdDraw.setCanvasSize(1000, 650);
 
@@ -148,6 +174,9 @@ public class AutoDrive implements Runnable {
         run();
     }
 
+    /**
+     * draw all the edges of the graph in the show window.
+     */
     private void drawEdges() {
         StdDraw.clear();
         for (node_data n : ga.getG().getV()) {
@@ -174,6 +203,9 @@ public class AutoDrive implements Runnable {
         }
     }
 
+    /**
+     * draw all the vertices of the graph in the show window.
+     */
     private void drawVertices() {
         for (node_data n : ga.getG().getV()) {
             StdDraw.setPenColor(Color.pink);
@@ -185,13 +217,20 @@ public class AutoDrive implements Runnable {
             StdDraw.text(p.x(), p.y(), n.getKey() + "");
         }
     }
-
+    /**
+     * draw all the fruits of the graph in the show window.
+     * we took a picture of a banana and apple, and locate them in the coordinates that we get.
+     */
     private void drawFruits() {
         for(Fruit f : FC.getFC()) {
             StdDraw.picture(f.getX(), f.getY(), f.getFileName());
         }
     }
 
+    /**
+     * draw all the robots of the graph in the show window.
+     * we took a picture of marvel characters, and locate them in the coordinates that we get.
+     */
     private void drawRobots() {
         for(Robot r : RC.getRC()) {
             StdDraw.picture(r.getX(), r.getY(), r.getFileName());
