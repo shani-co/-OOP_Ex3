@@ -11,8 +11,8 @@ public class Ex3 {
                 JOptionPane.QUESTION_MESSAGE,
                 null, options, options[1]);
         if (n == 0) {
-            myGameGUI gameGUI;
-            gameGUI = new myGameGUI();
+            MyGameGUI gameGUI;
+            gameGUI = new MyGameGUI();
         } else {
             AutoDrive game1;
             game1 = new AutoDrive();

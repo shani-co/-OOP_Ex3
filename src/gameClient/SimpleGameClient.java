@@ -12,9 +12,7 @@ import org.json.JSONObject;
 
 import Server.Game_Server;
 import Server.game_service;
-import oop_dataStructure.OOP_DGraph;
-import oop_dataStructure.oop_edge_data;
-import oop_dataStructure.oop_graph;
+
 /**
  * This class represents a simple example for using the GameServer API:
  * the main file performs the following tasks:
@@ -43,7 +41,7 @@ public class SimpleGameClient {
 
 		String g = game.getGraph();
 		DGraph gg = new DGraph(g);
-		myGameGUI gg1 = new myGameGUI();
+		MyGameGUI gg1 = new MyGameGUI();
 		String info = game.toString();
 		JSONObject line;
 		try {

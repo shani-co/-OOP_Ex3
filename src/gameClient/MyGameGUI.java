@@ -18,7 +18,7 @@ import java.awt.*;
 import java.util.List;
 import java.lang.String;
 
-public class myGameGUI implements Runnable {
+public class MyGameGUI implements Runnable {
 
     private Graph_Algo ga;
     private int scenario_num;
@@ -41,7 +41,7 @@ public class myGameGUI implements Runnable {
     }
 
     //constructor
-    public myGameGUI() {
+    public MyGameGUI() {
         askScenarioNum();
         String g = game.getGraph();
         DGraph dGraph = new DGraph(g);
@@ -49,13 +49,13 @@ public class myGameGUI implements Runnable {
         init();
     }
 
-    public myGameGUI(Graph_Algo ga) {
+    public MyGameGUI(Graph_Algo ga) {
         askScenarioNum();
         this.ga = ga;
         init();
     }
 
-    public myGameGUI(DGraph g) {
+    public MyGameGUI(DGraph g) {
         askScenarioNum();
         Graph_Algo ga = new Graph_Algo();
         ga.init(g);
