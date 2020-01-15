@@ -2,9 +2,7 @@ package gameClient;
 
 import Server.*;
 import algorithms.Graph_Algo;
-import dataStructure.DGraph;
-import dataStructure.Node;
-import dataStructure.node_data;
+import dataStructure.*;
 import gameObjects.Fruit;
 import gameObjects.FruitCollector;
 import gameObjects.Robot;
@@ -17,6 +15,7 @@ import utils.StdDraw;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.jar.JarException;
@@ -240,21 +239,21 @@ public class AutoDrive implements Runnable {
         List<String> log = game.move();
         if (log != null) {
             long t = game.timeToEnd();
-            for (int j = 0; j < log.size(); j++) {
-                String robot_json = log.get(j);
+            for (int i = 0; i < log.size(); i++) {
+                String robot_json = log.get(i);
                 System.out.println(robot_json);
-                Robot robot = RC.getRobot(j);
-                robot.build(robot_json);
-                if (robot.getSrc()==robot.getDest()) robot.setDest(-1);
-                if (robot.getDest() == -1) {
-                    List<node_data> path = nextStep(robot);
+                Robot r = RC.getRobot(i);
+                r.build(robot_json);
+                if (r.getSrc() == r.getDest()) r.setDest(-1);
+                if (r.getDest() == -1) {
+                    List<node_data> path = nextStep(r);
                     int key_next;
                     if(!path.isEmpty()) {
-                        for(int i = 0; i < path.size(); i++) {
-                            key_next = path.get(i).getKey();
-                            robot.setDest(key_next);
-                            game.chooseNextEdge(j, robot.getDest());
-                            System.out.println("Turn to node: " + robot.getDest() + "  time to end:" + (t / 1000));
+                        for(int j = 0; j < path.size(); j++) {
+                            key_next = path.get(j).getKey();
+                            r.setDest(key_next);
+                            game.chooseNextEdge(i, r.getDest());
+                            System.out.println("Turn to node: " + r.getDest() + "  time to end:" + (t / 1000));
                         }
                     }
                 }
@@ -282,6 +281,24 @@ public class AutoDrive implements Runnable {
         }
         if(chosen != null) chosen.setIsVisit(true);
         return res;
+    }
+
+    /**
+     * a very simple random walk implementation!
+     * @param g
+     * @param src
+     * @return
+     */
+    private static int nextNode(graph g, int src) {
+        int ans = -1;
+        Collection<edge_data> ee = g.getE(src);
+        Iterator<edge_data> itr = ee.iterator();
+        int s = ee.size();
+        int r = (int)(Math.random()*s);
+        int i=0;
+        while(i<r) {itr.next();i++;}
+        ans = itr.next().getDest();
+        return ans;
     }
 
 }
