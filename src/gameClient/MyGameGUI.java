@@ -10,11 +10,19 @@ import gameObjects.RobotCollector;
 import gameObjects.Robot;
 import org.json.JSONException;
 import org.json.JSONObject;
+import sun.audio.AudioData;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
+import sun.audio.ContinuousAudioDataStream;
 import utils.Point3D;
 import utils.StdDraw;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.lang.String;
 
@@ -271,7 +279,7 @@ public class MyGameGUI implements Runnable {
                 System.out.println(robot_json);
                 Robot robot = RC.getRobot(j);
                 robot.build(robot_json);
-                kml.placemark(r.getX(), r.getY(), 3);
+                kml.placemark(robot.getX(), robot.getY(), 3);
                 if (robot.getDest() == -1) {
                     int key_next = nextNode();
                     if(key_next != -1)
@@ -318,12 +326,42 @@ public class MyGameGUI implements Runnable {
     @Override
     public void run() {
         game.startGame();
+        music();
         while(game.isRunning()) {
             moveRobots();
             paint();
         }
         askKML();
     }
+    public static void music()
+    {
+        AudioPlayer MGP = AudioPlayer.player;
+        AudioStream BGM;
+        AudioData MD;
+
+        ContinuousAudioDataStream loop = null;
+
+        try
+        {
+            InputStream test = new FileInputStream("data\\song.wav");
+            BGM = new AudioStream(test);
+            AudioPlayer.player.start(BGM);
+            MD = BGM.getData();
+            loop = new ContinuousAudioDataStream(MD);
+
+        }
+        catch(FileNotFoundException e){
+            System.out.print(e.toString());
+        }
+        catch(IOException error)
+        {
+            System.out.print(error.toString());
+        }
+        MGP.start(loop);
+    }
+
+
+
 
     private void askKML() {
             Object[] options = {"YES", "NO"};
