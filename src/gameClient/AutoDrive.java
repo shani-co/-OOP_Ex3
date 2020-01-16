@@ -15,19 +15,61 @@ import utils.StdDraw;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.jar.JarException;
 
 public class AutoDrive implements Runnable {
 
+    private KML_Logger kml;
+    private Thread t;
     private Graph_Algo ga;
     private game_service game;
     private int scenario_num;
     private RobotCollector RC = new RobotCollector();
     private FruitCollector FC = new FruitCollector();
     double minX,maxX,minY,maxY;
+
+    //getters & setters
+
+    public Graph_Algo getGa() {
+        return ga;
+    }
+
+    public void setGa(Graph_Algo ga) {
+        this.ga = ga;
+    }
+
+    public game_service getGame() {
+        return game;
+    }
+
+    public void setGame(game_service game) {
+        this.game = game;
+    }
+
+    public int getScenario_num() {
+        return scenario_num;
+    }
+
+    public void setScenario_num(int scenario_num) {
+        this.scenario_num = scenario_num;
+    }
+
+    public RobotCollector getRC() {
+        return RC;
+    }
+
+    public void setRC(RobotCollector RC) {
+        this.RC = RC;
+    }
+
+    public FruitCollector getFC() {
+        return FC;
+    }
+
+    public void setFC(FruitCollector FC) {
+        this.FC = FC;
+    }
 
     //constructor
     public AutoDrive() {
@@ -142,6 +184,7 @@ public class AutoDrive implements Runnable {
      * draw on the window: the graph, all the robots, fruits.
      */
     private void init() {
+        kml = new KML_Logger(this);
         StdDraw.setCanvasSize(1000, 650);
 
         //find the scale size
@@ -171,7 +214,9 @@ public class AutoDrive implements Runnable {
         this.minY = minY;
         this.maxX = maxX;
         this.maxY = maxY;
-        run();
+
+        t = new Thread(this);
+        t.start();
     }
 
     /**
@@ -261,17 +306,27 @@ public class AutoDrive implements Runnable {
             moveRobots();
             paint();
         }
-        if(!game.isRunning()){
-            gameOver();
-            String gameServer = game.toString();
-            try {
-                JSONObject line = new JSONObject(gameServer);
-                double score = line.getJSONObject("GameServer").getDouble("grade");
-                System.out.println("SCORE: "+score);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+        gameOver();
+        String gameServer = game.toString();
+        try {
+            askKML();
+            JSONObject line = new JSONObject(gameServer);
+            double score = line.getJSONObject("GameServer").getDouble("grade");
+            System.out.println("SCORE: "+score);
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+    }
+
+    private void askKML() {
+        Object[] options = {"YES", "NO"};
+        int n = JOptionPane.showOptionDialog(null, "Do you want to save your game as KML file?",
+                "CHOOSE",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null, options, options[1]);
+        if (n == 0)
+            kml = new KML_Logger(this);
     }
 
     private void gameOver() {
@@ -292,17 +347,21 @@ public class AutoDrive implements Runnable {
         for(Fruit f : FC.getFC()) {
             for(String s : game.getFruits()) {
                 f.build(s);
+                if(f.getType() == 1) {
+                    kml.placemark(f.getX(), f.getY(), f.getType());
+                }
+                else{
+                    kml.placemark(f.getX(), f.getY(), 2);
+                }
             }
         }
-
         if (log != null) {
             long t = game.timeToEnd();
             for (int i = 0; i < log.size(); i++) {
                 String robot_json = log.get(i);
-                //.out.println(robot_json);
                 Robot r = RC.getRobot(i);
                 r.build(robot_json);
-               // if (r.getSrc() == r.getDest()) r.setDest(-1);
+                kml.placemark(r.getX(), r.getY(), 3);
                 if ((r.getDest() == -1) && (r.getMyPath().isEmpty())) {
                     List<node_data> path = nextStep(r);
                     r.setMyPath((ArrayList<node_data>) path);
@@ -333,7 +392,6 @@ public class AutoDrive implements Runnable {
                     res.clear();
                     minPath = shortPathRes;
                     res.addAll(ga.shortestPath(SRC.getSrc(), f.getSRC().getKey()));
-                    System.out.println(res.size());
                     res.add(f.getDEST());
                     chosen = f;
                     if(shortPathRes == 0) break; //to not do unnecessary iterations (0 is the minimum for sure)

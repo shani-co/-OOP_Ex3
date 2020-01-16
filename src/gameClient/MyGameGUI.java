@@ -20,6 +20,8 @@ import java.lang.String;
 
 public class MyGameGUI implements Runnable {
 
+    private KML_Logger kml;
+    private Thread t;
     private Graph_Algo ga;
     private int scenario_num;
     private game_service game;
@@ -86,6 +88,7 @@ public class MyGameGUI implements Runnable {
     }
 
     private void init() {
+        kml = new KML_Logger(this);
         StdDraw.setCanvasSize(1000, 650);
 
         //find the scale size
@@ -116,7 +119,8 @@ public class MyGameGUI implements Runnable {
         this.maxX = maxX;
         this.maxY = maxY;
         explainGame(); //a window with the things that the user should do
-        run();
+        t = new Thread(this);
+        t.start();
     }
 
     private void explainGame() {
@@ -267,6 +271,7 @@ public class MyGameGUI implements Runnable {
                 System.out.println(robot_json);
                 Robot robot = RC.getRobot(j);
                 robot.build(robot_json);
+                kml.placemark(r.getX(), r.getY(), 3);
                 if (robot.getDest() == -1) {
                     int key_next = nextNode();
                     if(key_next != -1)
@@ -317,6 +322,17 @@ public class MyGameGUI implements Runnable {
             moveRobots();
             paint();
         }
+        askKML();
     }
 
+    private void askKML() {
+            Object[] options = {"YES", "NO"};
+            int n = JOptionPane.showOptionDialog(null, "Do you want to save your game as KML file?",
+                    "CHOOSE",
+                    JOptionPane.YES_NO_CANCEL_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null, options, options[1]);
+            if (n == 0)
+                kml = new KML_Logger(this);
+    }
 }
