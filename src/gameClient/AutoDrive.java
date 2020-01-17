@@ -202,7 +202,7 @@ public class AutoDrive implements Runnable {
         StdDraw.setXscale(minX - per * minX, maxX + per * maxX);
         StdDraw.setYscale(minY - per * minY, maxY + per * maxY);
 
-        //addBackgroundImg(maxX, maxY, minX, minY, per);
+        backgroundImg();
         findFirstLocationToRobot();
         drawEdges();
         drawVertices();
@@ -217,6 +217,13 @@ public class AutoDrive implements Runnable {
 
         t = new Thread(this);
         t.start();
+    }
+
+    /**
+     * add background image to the game window
+     */
+    private void backgroundImg() {
+        StdDraw.picture((minX+maxX)/2,(minY+maxY)/2, "data\\city.jpg");
     }
 
     /**

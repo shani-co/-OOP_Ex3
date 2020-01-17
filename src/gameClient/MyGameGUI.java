@@ -114,7 +114,7 @@ public class MyGameGUI implements Runnable {
         StdDraw.setXscale(minX - per * minX, maxX + per * maxX);
         StdDraw.setYscale(minY - per * minY, maxY + per * maxY);
 
-        //addBackgroundImg(maxX, maxY, minX, minY, per);
+        //addBackgroundMap();
         drawEdges();
         drawVertices();
         drawFruits();
@@ -138,12 +138,8 @@ public class MyGameGUI implements Runnable {
 
     /**
      * add background image of the map to the scale
-     * @param maxX
-     * @param maxY
-     * @param minX
-     * @param minY
      */
-    private void addBackgroundImg(double maxX, double maxY, double minX, double minY, double per) { //***
+    /*private void addBackgroundMap() { //***
         String gameServer = game.toString();
         try {
             JSONObject line = new JSONObject(gameServer);
@@ -156,7 +152,7 @@ public class MyGameGUI implements Runnable {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * draw all the edges that come out of each vertex
