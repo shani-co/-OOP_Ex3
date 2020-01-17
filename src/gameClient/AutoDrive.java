@@ -231,7 +231,9 @@ public class AutoDrive implements Runnable {
      * add background image to the game window
      */
     private void backgroundImg() {
-        StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\city.jpg");
+        StdDraw.picture((maxX+minX)/2, (maxY+minY)/2, "data\\cityBackground.jpg", 0.05,
+                0.02);
+        //StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\city.jpg");
     }
 
     /**

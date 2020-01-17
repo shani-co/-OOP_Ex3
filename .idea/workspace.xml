@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/cityBackground.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/1.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/2.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/MyGameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/MyGameGUI.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -161,6 +162,7 @@
       <workItem from="1578993641904" duration="10518000" />
       <workItem from="1579074189785" duration="186000" />
       <workItem from="1579163974672" duration="9048000" />
+      <workItem from="1579272614816" duration="1051000" />
     </task>
     <task id="LOCAL‎00001" summary="made function AutoDrive- locate robot">
       <created>1578828961305</created>
@@ -270,7 +272,13 @@
       <option name="presentableId" value="LOCAL‎00018" />
       <updated>1579270699247</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL‎00019" summary="everyThing is working except of the background image">
+      <created>1579271960383</created>
+      <option name="number" value="LOCAL‎00019" />
+      <option name="presentableId" value="LOCAL‎00019" />
+      <updated>1579271960383</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +316,8 @@
     <MESSAGE value="try to save kml files and add background image" />
     <MESSAGE value="save kml files!!" />
     <MESSAGE value="fixed problem in saving KML" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed problem in saving KML" />
+    <MESSAGE value="everyThing is working except of the background image" />
+    <option name="LAST_COMMIT_MESSAGE" value="everyThing is working except of the background image" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1578918940040">
