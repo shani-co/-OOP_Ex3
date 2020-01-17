@@ -66,7 +66,7 @@ public class KML_Logger {
             String filename = "";
             if(Mgame != null) filename = "ManualGame.kml";
             if(Agame != null) filename = "AutoGame.kml";
-            BufferedWriter writer = new BufferedWriter(new FileWriter("YourGame.kml"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
             writer.write(kml);
             writer.close();
         } catch (IOException e) {

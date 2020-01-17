@@ -329,6 +329,7 @@ public class MyGameGUI implements Runnable {
         }
         askKML();
     }
+
     public static void music()
     {
         AudioPlayer MGP = AudioPlayer.player;
@@ -356,9 +357,6 @@ public class MyGameGUI implements Runnable {
         MGP.start(loop);
     }
 
-
-
-
     private void askKML() {
             Object[] options = {"YES", "NO"};
             int n = JOptionPane.showOptionDialog(null, "Do you want to save your game as KML file?",
@@ -366,7 +364,9 @@ public class MyGameGUI implements Runnable {
                     JOptionPane.YES_NO_CANCEL_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null, options, options[1]);
-            if (n == 0)
+            if (n == 0) {
                 kml = new KML_Logger(this);
+                kml.toKML_file();
+            }
     }
 }

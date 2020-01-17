@@ -231,7 +231,7 @@ public class AutoDrive implements Runnable {
      * add background image to the game window
      */
     private void backgroundImg() {
-        StdDraw.picture((minX+maxX)/2,(minY+maxY)/2, "data\\city.jpg");
+        StdDraw.picture(minX+0.00001, minY+0.000001, "data\\city.jpg");
     }
 
     /**
@@ -341,8 +341,10 @@ public class AutoDrive implements Runnable {
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null, options, options[1]);
-        if (n == 0)
+        if (n == 0) {
             kml = new KML_Logger(this);
+            kml.toKML_file();
+        }
     }
 
     private void gameOver() {
@@ -417,6 +419,7 @@ public class AutoDrive implements Runnable {
         if(chosen != null) chosen.setIsVisit(true);
         return res;
     }
+
     public static void music()
     {
         AudioPlayer MGP = AudioPlayer.player;
