@@ -28,7 +28,7 @@ public class KML_Logger {
     }
 
     private String date(){
-        Date date =new Date();
+        Date date = new Date();
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         DateFormat df2 = new SimpleDateFormat("HH:mm:ss");
         String timeStr = df.format(date);
@@ -39,10 +39,10 @@ public class KML_Logger {
 
     private void build() {
         kml+= upper();
-        kml+=IconNodes(4);
+        kml+= IconNodes(4);
         kml+= IconRobots(3);
-        kml+=IconFruits(2);
-        kml+=IconFruits(1);
+        kml+= IconFruits(2); //banana
+        kml+= IconFruits(1); //apple
         if(Agame != null) {
             for (node_data n : Agame.getGa().getG().getV()) { //put vertices
                 double x = n.getLocation().x();
@@ -74,7 +74,7 @@ public class KML_Logger {
         }
     }
 
-    public void placemark( double x, double y, int id) {
+    public void placemark(double x, double y, int id) {
         String s = "    <Placemark>\n" +
                 "      <TimeStamp>\n" +
                 "        <when>"+date()+"</when>\n" +
@@ -112,7 +112,7 @@ public class KML_Logger {
                     "      </IconStyle>\n" +
                     "    </Style>\n";
         }
-        // banana
+        //banana
         else if(id == 2){
             s = "<Style id=\"" + id + "\">\n" +
                     "      <IconStyle>\n" +
@@ -122,7 +122,6 @@ public class KML_Logger {
                     "        <hotSpot x=\"32\" y=\"1\" xunits=\"pixels\" yunits=\"pixels\"/>\n" +
                     "      </IconStyle>\n" +
                     "    </Style>\n";
-
         }
         return s;
     }
@@ -136,7 +135,6 @@ public class KML_Logger {
                 "        <hotSpot x=\"32\" y=\"1\" xunits=\"pixels\" yunits=\"pixels\"/>\n" +
                 "      </IconStyle>\n" +
                 "    </Style>\n";
-
         return s;
     }
 

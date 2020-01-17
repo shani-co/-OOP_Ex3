@@ -365,7 +365,6 @@ public class MyGameGUI implements Runnable {
                     JOptionPane.QUESTION_MESSAGE,
                     null, options, options[1]);
             if (n == 0) {
-                kml = new KML_Logger(this);
                 kml.toKML_file();
             }
     }

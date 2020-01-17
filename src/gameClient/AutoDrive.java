@@ -341,8 +341,7 @@ public class AutoDrive implements Runnable {
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null, options, options[1]);
-        if (n == 0) {
-            kml = new KML_Logger(this);
+        if (n == 0) { //the answer is YES
             kml.toKML_file();
         }
     }
@@ -365,10 +364,10 @@ public class AutoDrive implements Runnable {
         for(Fruit f : FC.getFC()) {
             for(String s : game.getFruits()) {
                 f.build(s);
-                if(f.getType() == 1) {
-                    kml.placemark(f.getX(), f.getY(), f.getType());
+                if(f.getType() == 1) { //apple
+                    kml.placemark(f.getX(), f.getY(), 1);
                 }
-                else{
+                else{ //banana
                     kml.placemark(f.getX(), f.getY(), 2);
                 }
             }
