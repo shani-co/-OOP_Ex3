@@ -252,18 +252,7 @@ public class MyGameGUI implements Runnable {
         StdDraw.setPenColor();
         StdDraw.setFont(new Font("Ariel", Font.PLAIN, 15));
         StdDraw.text((maxX+minX)*0.5, (0.1*minY+maxY*0.9), "Time Left: "+time/1000+"."+time%1000);
-        if(time%1000 == -1) {
-            StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\gameOver.jpg");
-            String gameServer = game.toString();
-            try {
-                JSONObject line = new JSONObject(gameServer);
-                double score = line.getJSONObject("GameServer").getDouble("grade");
-                StdDraw.setPenColor(Color.WHITE);
-                StdDraw.text((maxX+minX)*0.5, 0.3*maxY+minY*0.7, "YOUR SCORE: "+score+"");
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
+        if(time%1000 == -1) gameOver();
     }
 
     private void moveRobots() {
@@ -327,8 +316,22 @@ public class MyGameGUI implements Runnable {
             moveRobots();
             paint();
         }
+        gameOver();
         askKML();
     }
+
+    private void gameOver() {
+            StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\gameOver.jpg");
+            String gameServer = game.toString();
+            try {
+                JSONObject line = new JSONObject(gameServer);
+                double score = line.getJSONObject("GameServer").getDouble("grade");
+                StdDraw.setPenColor(Color.WHITE);
+                StdDraw.text((maxX+minX)*0.5, 0.3*maxY+minY*0.7, "YOUR SCORE: "+score+"");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
 
     public static void music()
     {

@@ -231,7 +231,7 @@ public class AutoDrive implements Runnable {
      * add background image to the game window
      */
     private void backgroundImg() {
-        StdDraw.picture(minX+0.00001, minY+0.000001, "data\\city.jpg");
+        StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\city.jpg");
     }
 
     /**
@@ -302,11 +302,11 @@ public class AutoDrive implements Runnable {
         drawVertices();
         drawFruits();
         drawRobots();
-        showTime(maxX, minY,minX,maxY);
+        showTime();
         StdDraw.show();
     }
 
-    private void showTime(double maxX, double minY, double minX, double maxY) {
+    private void showTime() {
         long time = game.timeToEnd();
         StdDraw.setPenColor();
         StdDraw.setFont(new Font("Ariel", Font.PLAIN, 15));
@@ -323,9 +323,9 @@ public class AutoDrive implements Runnable {
             paint();
         }
         gameOver();
+        askKML();
         String gameServer = game.toString();
         try {
-            askKML();
             JSONObject line = new JSONObject(gameServer);
             double score = line.getJSONObject("GameServer").getDouble("grade");
             System.out.println("SCORE: "+score);
