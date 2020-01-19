@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Testing/FruitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Testing/RobotTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/KML_Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/KML_Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ObjectOriented_Task3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectOriented_Task3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/1.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/2.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameObjects/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Fruit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameObjects/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Robot.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +36,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -54,6 +63,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/gameClient/gson-2.8.6.jar!/" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -66,19 +77,17 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+      <recent name="gameObjects" />
+      <recent name="gameClient" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Ex3">
+  <component name="RunManager" selected="JUnit.RobotTest">
     <configuration name="Ex3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gameClient.Ex3" />
       <module name="ObjectOriented_Task3" />
@@ -105,19 +114,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="algorithms.Test" />
-      <module name="ObjectOriented_Task3" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="algorithms.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="testGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gameClient.testGUI" />
       <module name="ObjectOriented_Task3" />
@@ -131,14 +127,45 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FruitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ObjectOriented_Task3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="FruitTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RobotTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ObjectOriented_Task3" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RobotTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RobotTest" />
         <item itemvalue="Application.Ex3" />
-        <item itemvalue="Application.testGUI" />
-        <item itemvalue="Application.Test" />
+        <item itemvalue="JUnit.FruitTest" />
         <item itemvalue="Application.SimpleGameClient" />
+        <item itemvalue="Application.testGUI" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -349,34 +376,42 @@
     <option name="LAST_COMMIT_MESSAGE" value="Documentation to KML_Logger class" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1579456206346">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.680@0.0.1280.680" timestamp="1579456206346" />
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1578918940040">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1578918940040" />
-    <state x="438" y="227" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578936295271">
+    <state x="371" y="117" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1579451864769">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="438" y="227" width="404" height="236" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1578936295271" />
+    <state x="371" y="117" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1579451864769" />
+    <state x="438" y="227" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1579451645468">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="438" y="227" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1579451645468" />
     <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1579440686650">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1579440686650" />
-    <state width="1237" height="101" key="GridCell.Tab.0.bottom" timestamp="1579446981194">
+    <state width="1237" height="226" key="GridCell.Tab.0.bottom" timestamp="1579457445262">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="101" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579446981194" />
-    <state width="1237" height="101" key="GridCell.Tab.0.center" timestamp="1579446981194">
+    <state width="1237" height="226" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579457445262" />
+    <state width="1237" height="226" key="GridCell.Tab.0.center" timestamp="1579457445262">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="101" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579446981194" />
-    <state width="1237" height="101" key="GridCell.Tab.0.left" timestamp="1579446981193">
+    <state width="1237" height="226" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579457445262" />
+    <state width="1237" height="226" key="GridCell.Tab.0.left" timestamp="1579457445262">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="101" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579446981193" />
-    <state width="1237" height="101" key="GridCell.Tab.0.right" timestamp="1579446981194">
+    <state width="1237" height="226" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579457445262" />
+    <state width="1237" height="226" key="GridCell.Tab.0.right" timestamp="1579457445262">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="101" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579446981194" />
+    <state width="1237" height="226" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579457445262" />
     <state width="1237" height="113" key="GridCell.Tab.1.bottom" timestamp="1579093367046">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -409,10 +444,18 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1578993641486" />
+    <state x="302" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579451638857">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="302" y="0" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1280.680@0.0.1280.680" timestamp="1579451638857" />
     <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1579421110428">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1579421110428" />
+    <state x="405" y="60" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1579456456432">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="405" y="60" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1579456456432" />
     <state x="203" y="78" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1579024703487">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

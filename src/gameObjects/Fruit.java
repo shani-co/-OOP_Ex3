@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Fruit {
 
-    private double value; //?
+    private double value;
     private int type;
     private double loc_x;
     private double loc_y;
@@ -62,10 +62,6 @@ public class Fruit {
         return type;
     }
 
-    public void setType(int type) {
-        this.type = type;
-    }
-
     public double getX() {
         return loc_x;
     }
@@ -86,10 +82,6 @@ public class Fruit {
         return fileName;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
     //constructor
     public Fruit(String s) {
        build(s);
@@ -100,6 +92,7 @@ public class Fruit {
      * @param s
      */
     public void build(String s) {
+        System.out.println(s);
         try {
             JSONObject line = new JSONObject(s);
             this.value = line.getJSONObject("Fruit").getDouble("value");
@@ -115,7 +108,6 @@ public class Fruit {
             e.printStackTrace();
         }
     }
-
 
     /**
      * find the edge that the fruit is stand on.
