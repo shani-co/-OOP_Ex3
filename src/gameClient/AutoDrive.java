@@ -231,8 +231,9 @@ public class AutoDrive implements Runnable {
      * add background image to the game window
      */
     private void backgroundImg() {
+        StdDraw.clear();
         //StdDraw.picture((maxX+minX)/2, (maxY+minY)/2, "data\\cityBackground.jpg", 0.05,
-                //0.02);
+               // 0.02);
         StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\cityBackground.jpg");
     }
 
@@ -240,7 +241,6 @@ public class AutoDrive implements Runnable {
      * draw all the edges of the graph in the show window.
      */
     private void drawEdges() {
-        StdDraw.clear();
         for (node_data n : ga.getG().getV()) {
             for (int dest : ((Node) n).getNeighbors().keySet()) {
                 Point3D p_src = n.getLocation();
@@ -284,9 +284,30 @@ public class AutoDrive implements Runnable {
      * we took a picture of a banana and apple, and locate them in the coordinates that we get.
      */
     private void drawFruits() {
-        for(Fruit f : FC.getFC()) {
-            StdDraw.picture(f.getX(), f.getY(), f.getFileName());
+        try {
+
+            List<String> log = game.getFruits();
+            Iterator<String> f_iter = log.iterator();
+            while (f_iter.hasNext()) {
+                JSONObject line = new JSONObject(f_iter.next());
+                String pos = line.getJSONObject("Fruit").getString("pos");
+                int type = line.getJSONObject("Fruit").getInt("type");
+                String[] spl = pos.split(",");
+                if(type==-1) {
+                    StdDraw.picture(Double.parseDouble(spl[0]), Double.parseDouble(spl[1]), "data\\banana.png");
+                }else {
+                    StdDraw.picture(Double.parseDouble(spl[0]), Double.parseDouble(spl[1]), "data\\apple.png");
+                }
+            }
+        }catch (Exception e){
+
+
         }
+//        System.out.println(FC.getSize());
+//        for(Fruit f : FC.getFC()) {
+//            System.out.println(f.getID());
+//            StdDraw.picture(f.getX(), f.getY(), f.getFileName());
+//        }
     }
 
     /**
@@ -307,6 +328,7 @@ public class AutoDrive implements Runnable {
         backgroundImg();
         drawEdges();
         drawVertices();
+        System.out.println("fruit draw");
         drawFruits();
         drawRobots();
         showTime();

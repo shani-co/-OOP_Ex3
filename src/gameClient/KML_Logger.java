@@ -171,7 +171,7 @@ public class KML_Logger {
     }
 
     /**
-     * Add the end of the KML file and try to create a string
+      * Add the end of the KML file and try to create a string
      * (using BufferWriter)
      */
     public void toKML_file() {
@@ -180,7 +180,7 @@ public class KML_Logger {
         try {
             String filename = "";
             if(Mgame != null) filename = "ManualGame.kml";
-            if(Agame != null) filename = "10.kml";
+            if(Agame != null) filename = "AutoDrive.kml";
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
             writer.write(kml);
             writer.close();

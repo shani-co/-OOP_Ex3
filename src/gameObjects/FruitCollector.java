@@ -1,10 +1,6 @@
 package gameObjects;
 
-import Server.game_service;
-import dataStructure.DGraph;
-
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class FruitCollector {
