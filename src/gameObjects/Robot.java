@@ -82,10 +82,6 @@ public class Robot {
         this.loc_y = loc_y;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
-
     //constructor
     public Robot(String s) {
         build(s);

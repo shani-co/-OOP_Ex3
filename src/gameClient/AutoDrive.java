@@ -338,7 +338,6 @@ public class AutoDrive implements Runnable {
             moveRobots();
             paint();
         }
-        backgroundImg(); //***********
         gameOver();
         askKML();
         String gameServer = game.toString();
@@ -394,6 +393,7 @@ public class AutoDrive implements Runnable {
         List<String> log = game.move();
         for(Fruit f : FC.getFC()) {
             for(String s : game.getFruits()) {
+                System.out.println(s);
                 f.build(s);
                 if(f.getType() == 1) { //apple
                     kml.placemark(f.getX(), f.getY(), 1);
@@ -408,6 +408,7 @@ public class AutoDrive implements Runnable {
             for (int i = 0; i < log.size(); i++) {
                 String robot_json = log.get(i);
                 Robot r = RC.getRobot(i);
+                System.out.println(robot_json);
                 r.build(robot_json);
                 kml.placemark(r.getX(), r.getY(), 3);
                 if ((r.getDest() == -1) && (r.getMyPath().isEmpty())) {
