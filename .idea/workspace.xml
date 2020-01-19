@@ -89,7 +89,7 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RobotTest">
+  <component name="RunManager" selected="Application.Ex3">
     <configuration name="Ex3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gameClient.Ex3" />
       <module name="ObjectOriented_Task3" />
@@ -149,8 +149,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RobotTest" />
         <item itemvalue="Application.Ex3" />
+        <item itemvalue="JUnit.RobotTest" />
         <item itemvalue="JUnit.FruitTest" />
         <item itemvalue="Application.SimpleGameClient" />
         <item itemvalue="Application.testGUI" />
@@ -394,26 +394,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="438" y="227" width="404" height="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1579451645468" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1579440686650">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1579458555126">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1579440686650" />
-    <state width="1237" height="226" key="GridCell.Tab.0.bottom" timestamp="1579457445262">
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1579458555126" />
+    <state width="1237" height="79" key="GridCell.Tab.0.bottom" timestamp="1579458609391">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="226" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579457445262" />
-    <state width="1237" height="226" key="GridCell.Tab.0.center" timestamp="1579457445262">
+    <state width="1237" height="79" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1579458609391" />
+    <state width="1237" height="79" key="GridCell.Tab.0.center" timestamp="1579458609390">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="226" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579457445262" />
-    <state width="1237" height="226" key="GridCell.Tab.0.left" timestamp="1579457445262">
+    <state width="1237" height="79" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1579458609390" />
+    <state width="1237" height="79" key="GridCell.Tab.0.left" timestamp="1579458609390">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="226" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579457445262" />
-    <state width="1237" height="226" key="GridCell.Tab.0.right" timestamp="1579457445262">
+    <state width="1237" height="79" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1579458609390" />
+    <state width="1237" height="79" key="GridCell.Tab.0.right" timestamp="1579458609391">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="226" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579457445262" />
+    <state width="1237" height="79" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1579458609391" />
     <state width="1237" height="113" key="GridCell.Tab.1.bottom" timestamp="1579093367046">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -438,10 +438,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="354" y="58" key="MultipleFileMergeDialog/0.0.1280.680@0.0.1280.680" timestamp="1579026556215" />
-    <state x="233" y="75" key="Vcs.Push.Dialog.v2" timestamp="1579440690860">
+    <state x="233" y="75" key="Vcs.Push.Dialog.v2" timestamp="1579458561301">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="233" y="75" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1579440690860" />
+    <state x="233" y="75" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1579458561301" />
     <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1578993641486">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

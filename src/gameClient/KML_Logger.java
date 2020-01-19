@@ -76,7 +76,7 @@ public class KML_Logger {
      * @param y = the y coordinate
      * @param id = type
      */
-    private void placemark(double x, double y, int id) {
+    public void placemark(double x, double y, int id) {
         String s = "    <Placemark>\n" +
                 "      <TimeStamp>\n" +
                 "        <when>"+date()+"</when>\n" +
@@ -180,7 +180,7 @@ public class KML_Logger {
         try {
             String filename = "";
             if(Mgame != null) filename = "ManualGame.kml";
-            if(Agame != null) filename = "AutoDrive.kml";
+            if(Agame != null) filename = "10.kml";
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
             writer.write(kml);
             writer.close();
