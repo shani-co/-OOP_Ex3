@@ -299,6 +299,10 @@ public class AutoDrive implements Runnable {
         }
     }
 
+
+    /**
+     * paint all in the show window
+     */
     private void paint(){
         backgroundImg();
         drawEdges();
@@ -309,6 +313,9 @@ public class AutoDrive implements Runnable {
         StdDraw.show();
     }
 
+    /**
+     * show how much time left to play.
+     */
     private void showTime() {
         long time = game.timeToEnd();
         StdDraw.setPenColor();
@@ -317,6 +324,12 @@ public class AutoDrive implements Runnable {
         if(time%1000 == -1) gameOver();
     }
 
+    /**
+     * this function start the game.
+     * while the game is running, the robots will move to the next fruits
+     * and the show window draw himself all over again.
+     * when the game is end, all the data of the robots saved in KML file.
+     */
     @Override
     public void run() {
         game.startGame();
@@ -338,6 +351,10 @@ public class AutoDrive implements Runnable {
         }
     }
 
+    /**
+     * ask if we want to keep the data in KML file.
+     * if yes- activate another function.
+     */
     private void askKML() {
         Object[] options = {"YES", "NO"};
         int n = JOptionPane.showOptionDialog(null, "Do you want to save your game as KML file?",
@@ -350,6 +367,9 @@ public class AutoDrive implements Runnable {
         }
     }
 
+    /**
+     * draw message -game over, in the end of the game.
+     */
     private void gameOver() {
         StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\gameOver.jpg");
         String gameServer = game.toString();
@@ -363,6 +383,13 @@ public class AutoDrive implements Runnable {
         }
     }
 
+    /**
+     * this function always Renews the fruits and bots from the  Json file,
+     * and send the data to KML file.
+     * its also check if know what the next step that they need do do (To get to the fruits).
+     * if they dont know (the list that contains the way is empty), we go to
+     * another function that find the next dest.
+     */
     private void moveRobots() {
         List<String> log = game.move();
         for(Fruit f : FC.getFC()) {
@@ -399,6 +426,12 @@ public class AutoDrive implements Runnable {
         }
     }
 
+    /**
+     * we build a list of node_data that contains the way from the robot src to his dest.
+     * we using the function shortestPath-> to find the shortest path from one vertex to onenter vertex on a graph.
+     * @param SRC =src of the robot
+     * @return the way that the robot need to do.
+     */
     private List<node_data> nextStep(Robot SRC) {
         double minPath = Double.POSITIVE_INFINITY;
         List<node_data> res = new ArrayList<node_data>();
@@ -423,6 +456,9 @@ public class AutoDrive implements Runnable {
         return res;
     }
 
+    /**
+     * start play the background music when the game begging.
+     */
     public static void music()
     {
         AudioPlayer MGP = AudioPlayer.player;
