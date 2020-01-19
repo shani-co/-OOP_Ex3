@@ -32,7 +32,8 @@ public class FruitCollector {
         return null;
     }
 
-    public void fruitID_SRC(game_service game, DGraph graph){
+
+   /* public void fruitID_SRC(game_service game, DGraph graph){
         List<String> info = game.getFruits();
         Iterator<String> itr = info.iterator();
         int i=0;
@@ -45,6 +46,8 @@ public class FruitCollector {
           i++;
 
         }
+        }*/
+
     }
 
-}
+

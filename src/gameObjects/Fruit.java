@@ -25,6 +25,11 @@ public class Fruit {
     private node_data dest;
     private boolean isVisit = false;
 
+    /**
+     * getters and setters
+     * @return
+     */
+
     public boolean getIsVisit() {
         return this.isVisit;
     }
@@ -90,6 +95,10 @@ public class Fruit {
        build(s);
     }
 
+    /**
+     * take data from json file ,and build a new fruit.
+     * @param s
+     */
     public void build(String s) {
         try {
             JSONObject line = new JSONObject(s);
@@ -107,14 +116,12 @@ public class Fruit {
         }
     }
 
-    /*private void findEdge(DGraph graph) {
-        Iterator<node_data> itr_nodes = graph.getV().iterator();
-        while (itr_nodes.hasNext()) {
-            node_data src = itr_nodes.next();
-            Iterator<edge_data> itr_edges = graph.getE()
-        }
-    }*/
 
+    /**
+     * find the edge that the fruit is stand on.
+     * update what the src and dest node of the fruit.
+     * @param graph- the game
+     */
     public void findEdge(DGraph graph) {
         Iterator<node_data> itr = graph.getV().iterator();
         while (itr.hasNext()) {

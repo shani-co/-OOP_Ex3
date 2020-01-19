@@ -17,7 +17,10 @@ public class Robot {
     private String fileName;
     private ArrayList<node_data> myPath = new ArrayList<node_data>();
 
-    //getters and setters
+    /**
+     * getters and setters
+     * @return
+     */
 
     public ArrayList<node_data> getMyPath() {
         return this.myPath;
@@ -88,6 +91,10 @@ public class Robot {
         build(s);
     }
 
+    /**
+     * take data from json file ,and build a new robot.
+     * @param s
+     */
     public void build(String s) {
         try {
             JSONObject robot = new JSONObject(s);
