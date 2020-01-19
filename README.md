@@ -11,3 +11,8 @@ The robots travel on the graph on purpose to catch As much as possible fruits in
 There are two modes for the game:  Automatic game - our algorythem for getting the best score.locating the robot in the best loction in the graph and finding the closest and the high score fruits.
 
 Manual game -you choose the robots loction ,and move them with the mouse. In the end of any game .all the informion about the robot ans fruits will save and there to export the game in to an KML file.
+
+
+
+
+![matala](https://i.imgur.com/ezaiEE6.jpg)
