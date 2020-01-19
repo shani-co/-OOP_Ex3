@@ -71,10 +71,10 @@ public class KML_Logger {
     }
 
     /**
-     *
-     * @param x
-     * @param y
-     * @param id
+     * create a string that represent a 'placemark' Kml code snippet
+     * @param x = the x coordinate
+     * @param y = the y coordinate
+     * @param id = type
      */
     public void placemark(double x, double y, int id) {
         String s = "    <Placemark>\n" +

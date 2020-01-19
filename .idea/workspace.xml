@@ -299,7 +299,13 @@
       <option name="presentableId" value="LOCAL‎00023" />
       <updated>1579440687177</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL‎00024" summary="Documentation to KML_Logger class">
+      <created>1579451548470</created>
+      <option name="number" value="LOCAL‎00024" />
+      <option name="presentableId" value="LOCAL‎00024" />
+      <updated>1579451548471</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +345,8 @@
     <MESSAGE value="fixed problem in saving KML" />
     <MESSAGE value="everyThing is working except of the background image" />
     <MESSAGE value="Documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Documentation" />
+    <MESSAGE value="Documentation to KML_Logger class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Documentation to KML_Logger class" />
   </component>
   <component name="WindowStateProjectService">
     <state x="446" y="51" key="#com.intellij.ide.util.MemberChooser" timestamp="1578918940040">
