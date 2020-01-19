@@ -11,9 +11,12 @@ import java.util.Date;
 
 public class KML_Logger {
 
-    private String kml;
-    private AutoDrive Agame;
-    private MyGameGUI Mgame;
+    //attributes
+    private String kml; //the string that we'll build in the code, on KML form.
+    private AutoDrive Agame; //initialized iff the game is automatic game
+    private MyGameGUI Mgame; //initialized iff the game is manual game
+
+    //constructors
 
     public KML_Logger(AutoDrive g) {
         Agame = g;
@@ -27,22 +30,18 @@ public class KML_Logger {
         build();
     }
 
-    private String date(){
-        Date date = new Date();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        DateFormat df2 = new SimpleDateFormat("HH:mm:ss");
-        String timeStr = df.format(date);
-        String timeStr2 = df2.format(date);
-        String finalDate = timeStr+"T"+timeStr2+"Z";
-        return finalDate;
-    }
-
+    /**
+     * The main function that create the KML string with all the data.
+     * Initializes it on the kml field.
+     */
     private void build() {
         kml+= upper();
+        //We set random numbers to differentiate between the different icons:
         kml+= IconNodes(4);
         kml+= IconRobots(3);
         kml+= IconFruits(2); //banana
         kml+= IconFruits(1); //apple
+        //loops goes all the graph's nodes and make a placemark.
         if(Agame != null) {
             for (node_data n : Agame.getGa().getG().getV()) { //put vertices
                 double x = n.getLocation().x();
@@ -59,21 +58,24 @@ public class KML_Logger {
         }
     }
 
-    public void toKML_file() {
-        kml+= "  </Document>\n";
-        kml+= "</kml>";
-        try {
-            String filename = "";
-            if(Mgame != null) filename = "ManualGame.kml";
-            if(Agame != null) filename = "AutoGame.kml";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
-            writer.write(kml);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    /**
+     * The beginning of the KML file (constant).
+     * @return s = a string representing the start of the KML.
+     */
+    private String upper() {
+        String s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+                "<kml xmlns=\"http://earth.google.com/kml/2.2\">\n"+
+                "<Document>\n" +
+                "\t<name>Points with TimeStamps</name>\n";
+        return s;
     }
 
+    /**
+     *
+     * @param x
+     * @param y
+     * @param id
+     */
     public void placemark(double x, double y, int id) {
         String s = "    <Placemark>\n" +
                 "      <TimeStamp>\n" +
@@ -87,6 +89,25 @@ public class KML_Logger {
         kml+= s;
     }
 
+    /**
+     * Method that uses Date class of java to init finalDate, that used while creating placemark.
+     * @return String that represents the real time now.
+     */
+    private String date() {
+        Date date = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat df2 = new SimpleDateFormat("HH:mm:ss");
+        String timeStr = df.format(date);
+        String timeStr2 = df2.format(date);
+        String finalDate = timeStr+"T"+timeStr2+"Z";
+        return finalDate;
+    }
+
+    /**
+     * Puts a Icon of robot (from google earth's icons)
+     * @param id = a number that represents the type
+     * @return s = a string that represent a 'style' Kml code snippet
+     */
     private String IconRobots(int id){
         String s = "<Style id=\""+id+"\">\n" +
                 "      <IconStyle>\n" +
@@ -99,6 +120,12 @@ public class KML_Logger {
         return s;
     }
 
+    /**
+     * puts icons of Fruits: YELLOW sign for banana
+     *                       GREEN sign for apple
+     * @param id = the relevant type
+     * @return s = a string that represent a 'style' Kml code snippet
+     */
     private String IconFruits(int id){
         String s = "";
         //apple
@@ -126,6 +153,11 @@ public class KML_Logger {
         return s;
     }
 
+    /**
+     * Add icon of vertex or node: a pink thumbtack.
+     *  @param id = the relevant type
+     *  @return s = a string that represent a 'style' Kml code snippet
+     */
     private String IconNodes(int id){
         String s = "<Style id=\""+id+"\">\n" +
                 "      <IconStyle>\n" +
@@ -138,11 +170,22 @@ public class KML_Logger {
         return s;
     }
 
-    private String upper() {
-        String s = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<kml xmlns=\"http://earth.google.com/kml/2.2\">\n"+
-                "<Document>\n" +
-                "\t<name>Points with TimeStamps</name>\n";
-        return s;
+    /**
+     * Add the end of the KML file and try to create a string
+     * (using BufferWriter)
+     */
+    public void toKML_file() {
+        kml+= "  </Document>\n";
+        kml+= "</kml>";
+        try {
+            String filename = "";
+            if(Mgame != null) filename = "ManualGame.kml";
+            if(Agame != null) filename = "AutoGame.kml";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+            writer.write(kml);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
