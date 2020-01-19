@@ -125,6 +125,7 @@ public class MyGameGUI implements Runnable {
         StdDraw.setYscale(minY - per * minY, maxY + per * maxY);
 
         //addBackgroundMap();
+        backgroundImg();
         drawEdges();
         drawVertices();
         drawFruits();
@@ -167,11 +168,18 @@ public class MyGameGUI implements Runnable {
         }
     }*/
 
+     /**
+       * add background image to the game window
+       */
+     private void backgroundImg() {
+         StdDraw.clear();
+         StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\cityBackground.jpg");
+     }
+
     /**
      * draw all the edges that come out of each vertex
      */
     private void drawEdges() {
-        StdDraw.clear();
         for (node_data n : ga.getG().getV()) {
             for (int dest : ((Node) n).getNeighbors().keySet()) {
                 Point3D p_src = n.getLocation();
@@ -338,7 +346,8 @@ public class MyGameGUI implements Runnable {
     }
 
     //paint the show window
-    private void paint(){
+    private void paint() {
+        backgroundImg();
         drawEdges();
         drawVertices();
         drawFruits();

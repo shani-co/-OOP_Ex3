@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="Added junit class to KML_Logger">
-      <change beforePath="$PROJECT_DIR$/src/Testing/KML_LoggerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing/KML_LoggerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/KML_Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/KML_Logger.java" afterDir="false" />
+    <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/1.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/2.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameClient/MyGameGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/MyGameGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -341,7 +343,13 @@
       <option name="presentableId" value="LOCAL‎00026" />
       <updated>1579458656933</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL‎00027" summary="finished junit KML">
+      <created>1579463788156</created>
+      <option name="number" value="LOCAL‎00027" />
+      <option name="presentableId" value="LOCAL‎00027" />
+      <updated>1579463788156</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +391,8 @@
     <MESSAGE value="Documentation" />
     <MESSAGE value="Documentation to KML_Logger class" />
     <MESSAGE value="Added junit class to KML_Logger" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added junit class to KML_Logger" />
+    <MESSAGE value="finished junit KML" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished junit KML" />
   </component>
   <component name="WindowStateProjectService">
     <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1579456206346">
