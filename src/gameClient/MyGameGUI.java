@@ -58,13 +58,13 @@ public class MyGameGUI implements Runnable {
         this.ga = new Graph_Algo(dGraph);
         init();
     }
-
+    //constructor
     public MyGameGUI(Graph_Algo ga) {
         askScenarioNum();
         this.ga = ga;
         init();
     }
-
+    //constructor
     public MyGameGUI(DGraph g) {
         askScenarioNum();
         Graph_Algo ga = new Graph_Algo();
@@ -73,6 +73,10 @@ public class MyGameGUI implements Runnable {
         init();
     }
 
+
+    /**
+     * ask from the player in which map he want to play
+     */
     private void askScenarioNum() {
         try {
             String num = (String)JOptionPane.showInputDialog(null,
@@ -84,7 +88,10 @@ public class MyGameGUI implements Runnable {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    /**
+     * check that the player chose an existing map
+     * @param scenario_num the map number
+     */
     private void checkScenarioNum(int scenario_num) {
         if(scenario_num < 0 || scenario_num > 23)
             throw new RuntimeException("The number of game you chose is not exist!");
@@ -95,6 +102,9 @@ public class MyGameGUI implements Runnable {
         }
     }
 
+    /**
+     * Rebooting the show window
+     */
     private void init() {
         kml = new KML_Logger(this);
         StdDraw.setCanvasSize(1000, 650);
@@ -131,6 +141,9 @@ public class MyGameGUI implements Runnable {
         t.start();
     }
 
+    /**
+     * pop a message that explain the game
+     */
     private void explainGame() {
         JOptionPane.showMessageDialog(null,"When the game starts, click the next vertex you want to reach. \n" +
                 "The goal: Collect as much fruit as you can to earn the most points. GOOD LUCK");
@@ -210,6 +223,9 @@ public class MyGameGUI implements Runnable {
         }
     }
 
+    /**
+     * take data from the json file, and build a list of all robots(with all the data).
+     */
     private void initRobots() {
         try {
             JSONObject line = new JSONObject(game.toString());
@@ -227,6 +243,9 @@ public class MyGameGUI implements Runnable {
         }
     }
 
+    /**
+     * draw the robots on the show window
+     */
     private void drawRobots() {
         for(int i = 0; i < RC.getSize(); i++) {
             Robot r = RC.getRobot(i);
@@ -234,6 +253,10 @@ public class MyGameGUI implements Runnable {
         }
     }
 
+    /**
+     * add the robots (in their first location) to the graph.
+     * @param count
+     */
     private void posRobot_manual(int count) {
         String vertex = (String)JOptionPane.showInputDialog(null,
                 "Please choose the key of the vertex you want to put the " + count + "th robot into");
@@ -246,7 +269,13 @@ public class MyGameGUI implements Runnable {
             throw new RuntimeException("try again");
         }
     }
-
+    /**
+     * show how much time left to play.
+     * @param maxX The location of where time is displayed
+     * @param minY
+     * @param minX
+     * @param maxY
+     */
     private void showTime(double maxX, double minY, double minX, double maxY) {
         long time = game.timeToEnd();
         StdDraw.setPenColor();
@@ -255,6 +284,10 @@ public class MyGameGUI implements Runnable {
         if(time%1000 == -1) gameOver();
     }
 
+    /**
+     * build a new robots from json file.
+     * every time we initializing the next step of the robots.
+     */
     private void moveRobots() {
         List<String> log = game.move();
         if (log != null) {
@@ -276,6 +309,11 @@ public class MyGameGUI implements Runnable {
         }
     }
 
+    /**
+     * listen to the mouse click- and find the nearest node.
+     * the nearest node is the next dest of the robot.
+     * @return
+     */
     private int nextNode() {
         if(StdDraw.isMousePressed()) {
             Node n = findNearestNode(StdDraw.mouseX(), StdDraw.mouseY());
@@ -299,6 +337,7 @@ public class MyGameGUI implements Runnable {
         return null;
     }
 
+    //paint the show window
     private void paint(){
         drawEdges();
         drawVertices();
@@ -308,6 +347,10 @@ public class MyGameGUI implements Runnable {
         StdDraw.show();
     }
 
+    /**
+     * activate the game.
+     * while the time not end, the robot will keep moving.
+     */
     @Override
     public void run() {
         game.startGame();
@@ -320,6 +363,9 @@ public class MyGameGUI implements Runnable {
         askKML();
     }
 
+    /**
+     * paint the message -game over- when the game is over.
+     */
     private void gameOver() {
             StdDraw.picture((maxX+minX)*0.5, (maxY+minY)*0.5, "data\\gameOver.jpg");
             String gameServer = game.toString();
@@ -332,7 +378,9 @@ public class MyGameGUI implements Runnable {
                 e.printStackTrace();
             }
         }
-
+    /**
+     * start play the background music when the game begging.
+     */
     public static void music()
     {
         AudioPlayer MGP = AudioPlayer.player;
@@ -360,6 +408,10 @@ public class MyGameGUI implements Runnable {
         MGP.start(loop);
     }
 
+    /**
+     * ask if we want to keep the data in KML file.
+     * if yes- activate another function.
+     */
     private void askKML() {
             Object[] options = {"YES", "NO"};
             int n = JOptionPane.showOptionDialog(null, "Do you want to save your game as KML file?",
