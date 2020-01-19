@@ -1,38 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/0.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/1.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/10.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/11.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/12.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/13.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/14.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/15.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/16.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/17.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/18.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/19.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/2.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/20.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/21.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/22.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/23.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/3.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/4.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/5.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/6.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/7.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/8.kml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/9.kml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/1.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/2.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Testing/FruitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing/FruitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" afterDir="false" />
+    <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="Added junit class to KML_Logger">
+      <change beforePath="$PROJECT_DIR$/src/Testing/KML_LoggerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Testing/KML_LoggerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameClient/KML_Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/KML_Logger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +83,18 @@
       <recent name="C:\Users\Yasmin\Documents\GitHub\-OOP_Ex3\data" />
     </key>
   </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
   <component name="RunManager" selected="Application.Ex3">
     <configuration name="Ex3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gameClient.Ex3" />
@@ -179,18 +162,6 @@
         <item itemvalue="Application.testGUI" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
