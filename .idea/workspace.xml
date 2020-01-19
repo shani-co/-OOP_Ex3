@@ -3,12 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="0576931a-9757-4a8e-b171-7949b4ba2b5e" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/src/Testing/FruitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Testing/KML_LoggerTest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Testing/RobotTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ObjectOriented_Task3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ObjectOriented_Task3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/1.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/data/2.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/AutoDrive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gameClient/KML_Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameClient/KML_Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameObjects/Fruit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Fruit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/FruitCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gameObjects/Robot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gameObjects/Robot.java" afterDir="false" />
@@ -452,10 +454,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1579421110428" />
-    <state x="405" y="60" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1579456456432">
+    <state x="405" y="60" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1579458504387">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="405" y="60" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1579456456432" />
+    <state x="405" y="60" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1579458504387" />
     <state x="203" y="78" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1579024703487">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
