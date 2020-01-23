@@ -84,7 +84,9 @@ public class KML_Logger {
     public void placemark(double x, double y, int id) {
         String s = "    <Placemark>\n" +
                 "      <TimeStamp>\n" +
-                "        <when>"+date()+"</when>\n" +
+                "        <when>";
+        if(id == 4) s+= date();
+        s+= "</when>\n" +
                 "      </TimeStamp>\n" +
                 "      <styleUrl>"+id+"</styleUrl>\n" +
                 "      <Point>\n" +
@@ -184,8 +186,8 @@ public class KML_Logger {
         kml+= "</kml>";
         try {
             String filename = "";
-            if(Mgame != null) filename = "ManualGame.kml";
-            if(Agame != null) filename = "tester";
+            if(Mgame != null) filename = "ManualGame/" + this.Mgame.getScenario_num() + ".kml";
+            if(Agame != null) filename = "AutoGame/" + this.Agame.getScenario_num() + ".kml";
             BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
             writer.write(kml);
             writer.close();

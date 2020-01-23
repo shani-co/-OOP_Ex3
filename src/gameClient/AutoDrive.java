@@ -366,7 +366,9 @@ public class AutoDrive implements Runnable {
         try {
             JSONObject line = new JSONObject(gameServer);
             double score = line.getJSONObject("GameServer").getDouble("grade");
+            int moves = line.getJSONObject("GameServer").getInt("moves");
             System.out.println("SCORE: "+score);
+            System.out.println("MOVES: "+moves);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -397,8 +399,9 @@ public class AutoDrive implements Runnable {
         try {
             JSONObject line = new JSONObject(gameServer);
             double score = line.getJSONObject("GameServer").getDouble("grade");
+            int moves = line.getJSONObject("GameServer").getInt("moves");
             StdDraw.setPenColor(Color.WHITE);
-            StdDraw.text((maxX+minX)*0.5, 0.3*maxY+minY*0.7, "YOUR SCORE: "+score+"");
+            StdDraw.text((maxX+minX)*0.5, 0.3*maxY+minY*0.7, "YOUR SCORE: "+score+" ,MOVES: "+moves);
         } catch (JSONException e) {
             e.printStackTrace();
         }
